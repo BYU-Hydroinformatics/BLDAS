@@ -1,0 +1,5 @@
+Variable_Id|Variable_Display_Name|Units|Geoserver_Id|start|end|min|max
+Tair_f_tavg|Air Temperature|K|temp|blue|red|250|300
+SoilMoist_tavg|Soil Moisture Content|kg m-2|soilMoist|brown|green|0|100
+Rainf_tavg|Precipitation Rate|kg m-2 s-1|rain|red|blue|0|200
+Evap_tavg|Total Evapotranspiration|kg m-2 s-1|evap|red|blue|0|200

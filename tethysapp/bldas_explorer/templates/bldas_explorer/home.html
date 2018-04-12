@@ -1,0 +1,188 @@
+{% extends "bldas_explorer/base.html" %}
+{% load tethys_gizmos staticfiles %}
+
+{% block styles %}
+{{ block.super }}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://openlayers.org/en/v4.3.1/css/ol.css" type="text/css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+{% endblock %}
+
+{% block global_scripts %}
+{{block.super}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://highcharts.github.io/export-csv/export-csv.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.3.4/chroma.min.js"></script>
+<script src="https://openlayers.org/en/v4.3.1/build/ol.js"></script>
+{% endblock %}
+
+{% block header_buttons %}
+<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Graph">
+    <a data-toggle="modal" data-target="#ts-plot-modal"><span class="glyphicon glyphicon-stats"></span></a>
+</div>
+<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Help">
+    <a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>
+</div>
+{% endblock %}
+
+{% block app_navigation_items %}
+
+
+<br><br>
+<label>
+    Select a Variable
+</label>
+<select  class="var_table" name="var_table" id="var_table" style="width: 100%">
+
+</select>
+<br>
+<br>
+<label>
+    Select a Year
+</label>
+<select  class="year_table" name="year_table" id="year_table" style="width: 100%">
+    <option value="2017">2017</option>
+</select>
+<br>
+<br>
+<label>
+    Select an Interval Type
+</label>
+<select  class="interval_table" name="interval_table" id="interval_table" style="width: 100%">
+    <option value="DD">Dekad</option>
+    <option value="MM">Monthly</option>
+    <option value="3M">Quarterly</option>
+</select>
+<br>
+<br>
+<label>
+    Select Date
+</label>
+<select  class="date_table" name="date_table" id="date_table" style="width: 100%">
+
+</select>
+<br>
+<br>
+<b>Map Interaction</b>
+<select id="interaction-type" class="btn btn-xs btn-primary" data-width="fit">
+    <option value="None">None</option>
+    <option value="Point">Point</option>
+    <option value="Polygon">Polygon</option>
+    <option value="District">Select a District</option>
+</select>
+
+<div id="metadata" style="display: none" data-dekad-options="{{dekad_options}}" data-month-options="{{month_options}}" data-quarter-options="{{quarter_options}}" data-variable-info="{{variable_info}}"></div>
+<!--<a href="{{eepath}}" target="_blank">Click here for the Earth Engine Link</a>-->
+{% endblock %}
+
+{% block app_content %}
+<div id="map" class="map"></div>
+<div id="popup" class="popup"></div>
+<div id="slider-container" class="slider-container">
+    <div id="slider" class="slider"></div><br>
+    <div class="slider-info"><label id="label" for="slider-date">Curent Time:</label><!-- <input type="text" id="slider-date" style="display:none;" readonly value="2002 April 16">--><span id="slider-text"></span></div><br>
+    <div class="animation-controls">
+        <div class="btn btn-success btn-group btn-xs btn-run" role="group"><span class="glyphicon glyphicon-play"></span></div>
+        <div class="btn btn-danger btn-group btn-xs btn-stop" role="group"><span class="glyphicon glyphicon-pause"></span></div>
+        <div class="btn btn-danger btn-group btn-xs btn-decrease" role="group"><span class="glyphicon glyphicon-fast-backward"></span></div>
+        <div class="btn btn-success btn-group btn-xs btn-increase" role="group"><span class="glyphicon glyphicon-fast-forward"></span></div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{# Use the after_app_content block for modals #}
+{% block after_app_content %}
+<!-- Example Modal -->
+<div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h5 class="modal-title" id="help-modal-label">Example Modal</h5>
+            </div>
+            <div class="modal-body">
+                <p>You can add custom buttons to the app header using the <code>header_buttons</code> block. Use anchor/link tags for the button and wrap it in a div with the class <code>header-button</code>. For buttons with the gliphyicons, add the <code>glyphicon-button</code> class as well.</p>
+                <p>Ever have trouble using a modal in a Tethys app? Use the <code>after_app_content</code> block for modal content to allow them to function properly. See: <a href="https://getbootstrap.com/javascript/#modals">Bootstrap Modals</a></p>
+                <p>Add tooltips to any element by adding the <code>data-toggle</code>, <code>data-placement</code>, and <code>title</code> attributes to the button. See: <a href="https://getbootstrap.com/javascript/#tooltips">Bootstrap Tooltips</a></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Get Plot Modal -->
+<div class="modal fade" id="plot-modal" tabindex="-1" role="dialog" aria-labelledby="plot-modal-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="plot-modal-label">Plot Confirmation</h2>
+            </div>
+            <div class="modal-body">
+                <div class="info"></div>
+                <div class="warning"></div>
+                <form id="get-vic-plot" name="get-vic-plot" action="get-vic-plot/" method="POST">
+                    {% csrf_token %}
+
+                    <label for="variable_table_plot">
+                        Select a variable
+                    </label>
+                    <select  class="variable_table_plot" name="variable_table_plot" id="variable_table_plot" style="width: 100%">
+
+                    </select>
+                    <br>
+                    <br>
+                    <input type="text" name="point-lat-lon" id="point-lat-lon" hidden>
+                    <input type="text" name="poly-lat-lon" id="poly-lat-lon" hidden>
+
+                    <!--<input type="text" name="shp-lat-lon" id="shp-lat-lon" hidden>-->
+                    <button type="button" id="btn-get-plot" name="btn-get-plot" class="btn btn-default">Show Plot</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!--Show VIC Plot -->
+<div class="modal fade" id="ts-plot-modal" tabindex="-1" role="dialog" aria-labelledby="ts-plot-modal-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="ts-plot-modal-label">Time Series Plot</h2>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="chart-wrapper">
+                        <div class="chart-inner">
+                            <div align="center" class="flex-container-row"><img id="view-file-loading" class="view-file hidden" src="/static/saldas_explorer/images/loader.gif" /></div>
+                            <div id="plotter" name="plotter" style="height:350px;width:100%" ></div>
+                            <div id="info" class="hidden info"></div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block app_actions %}
+
+{% endblock %}
+
+{% block scripts %}
+{{ block.super }}
+<script src="{% static 'bldas_explorer/js/map.js' %}" type="text/javascript"></script>
+{% endblock %}

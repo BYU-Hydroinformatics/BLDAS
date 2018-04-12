@@ -1,0 +1,40 @@
+#app-content-wrapper #app-content {
+    padding-bottom:0;
+    margin:0;
+    height: 100%;
+}
+#app-content-wrapper #app-content #app-actions{
+    display:none;
+}
+
+#inner-app-content {
+    padding:0;
+    margin:0;
+    height: 100%;
+}
+#app-content-wrapper #app-content{
+
+}
+#map{
+    height:85%;
+    position:relative;
+}
+.slider-container{
+    height:15%;
+    position:relative;
+    background-color:#afafaf;
+
+}
+.slider-container .slider{
+    width:75%;
+    margin: 0 auto;
+    top: 50%;
+}
+.slider-container .slider-info{
+    text-align:center;
+    margin: 0 auto;
+}
+.slider-container .animation-controls{
+    margin: 0 auto;
+    text-align:center;
+}
