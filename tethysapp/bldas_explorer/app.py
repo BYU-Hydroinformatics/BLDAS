@@ -6,7 +6,7 @@ class BldasExplorer(TethysAppBase):
     Tethys app class for BLDAS Explorer.
     """
 
-    name = 'BLDAS Explorer'
+    name = 'BLDAS Explorer Beta'
     index = 'bldas_explorer:home'
     icon = 'bldas_explorer/images/logo.png'
     package = 'bldas_explorer'

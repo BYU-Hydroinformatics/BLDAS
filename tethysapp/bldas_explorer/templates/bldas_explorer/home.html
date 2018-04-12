@@ -71,10 +71,13 @@
     <option value="None">None</option>
     <option value="Point">Point</option>
     <option value="Polygon">Polygon</option>
-    <option value="District">Select a District</option>
+    <option value="District">Select a State</option>
 </select>
-
-<div id="metadata" style="display: none" data-dekad-options="{{dekad_options}}" data-month-options="{{month_options}}" data-quarter-options="{{quarter_options}}" data-variable-info="{{variable_info}}"></div>
+<br>
+<br>
+<b>Legend:</b>
+<div align="right"><canvas id="cv" width="200px" height="700px"></canvas></div>
+<div id="metadata" style="display: none" data-dekad-options="{{dekad_options}}" data-month-options="{{month_options}}" data-quarter-options="{{quarter_options}}" data-variable-info="{{variable_info}}" data-wms-url="{{geoserver_wms_url}}"></div>
 <!--<a href="{{eepath}}" target="_blank">Click here for the Earth Engine Link</a>-->
 {% endblock %}
 
@@ -103,17 +106,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h5 class="modal-title" id="help-modal-label">Example Modal</h5>
+                <h5 class="modal-title" id="help-modal-label">App Information</h5>
             </div>
             <div class="modal-body">
-                <p>You can add custom buttons to the app header using the <code>header_buttons</code> block. Use anchor/link tags for the button and wrap it in a div with the class <code>header-button</code>. For buttons with the gliphyicons, add the <code>glyphicon-button</code> class as well.</p>
-                <p>Ever have trouble using a modal in a Tethys app? Use the <code>after_app_content</code> block for modal content to allow them to function properly. See: <a href="https://getbootstrap.com/javascript/#modals">Bootstrap Modals</a></p>
-                <p>Add tooltips to any element by adding the <code>data-toggle</code>, <code>data-placement</code>, and <code>title</code> attributes to the button. See: <a href="https://getbootstrap.com/javascript/#tooltips">Bootstrap Tooltips</a></p>
+              <p>Put App Description Here......</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
-            </div>
+
         </div>
     </div>
 </div>
@@ -165,7 +163,7 @@
                 <div>
                     <div class="chart-wrapper">
                         <div class="chart-inner">
-                            <div align="center" class="flex-container-row"><img id="view-file-loading" class="view-file hidden" src="/static/saldas_explorer/images/loader.gif" /></div>
+                            <div align="center" class="flex-container-row"><img id="view-file-loading" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
                             <div id="plotter" name="plotter" style="height:350px;width:100%" ></div>
                             <div id="info" class="hidden info"></div>
                         </div>

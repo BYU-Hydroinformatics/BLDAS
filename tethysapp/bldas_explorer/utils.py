@@ -83,7 +83,7 @@ def get_variables_meta():
             end = linevals[5]
             vmin = linevals[6]
             vmax = linevals[7]
-            scale = calc_color_range(int(vmin),int(vmax))
+            scale = calc_color_range(float(vmin),float(vmax))
             variable_list.append({
                 'id': variable_id,
                 'display_name': display_name,
@@ -100,12 +100,14 @@ def get_variables_meta():
 
 def calc_color_range(min,max):
 
-    interval = abs((max - min) / 20)
+    interval = float(abs((max - min) / 20))
 
     if interval == 0:
         scale = [0] * 20
     else:
         scale = np.arange(min, max, interval).tolist()
+
+    print(scale)
 
     return scale
 

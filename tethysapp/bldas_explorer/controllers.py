@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from tethys_sdk.gizmos import *
 from utils import *
 from django.http import JsonResponse
+from config import *
 
 def home(request):
     """
@@ -28,12 +29,14 @@ def home(request):
         quarter_options.append([quarter,'Quarter '+str(quarter)])
 
     variable_info = get_variables_meta()
+    geoserver_wms_url = geoserver["wms_url"]
 
     context = {
         'variable_info': json.dumps(variable_info),
         'dekad_options':json.dumps(dekad_options),
         'month_options':json.dumps(month_options),
-        'quarter_options':json.dumps(quarter_options)
+        'quarter_options':json.dumps(quarter_options),
+        'geoserver_wms_url': geoserver_wms_url,
     }
 
     return render(request, 'bldas_explorer/home.html', context)

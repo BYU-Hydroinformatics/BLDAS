@@ -40,7 +40,6 @@ var LIBRARY_OBJECT = (function() {
         styling,
         variable_data,
         $tsplotModal,
-        wms_workspace,
         wms_url,
         wms_layer,
         wms_source;
@@ -84,11 +83,12 @@ var LIBRARY_OBJECT = (function() {
         quarter_options = JSON.parse(quarter_options);
         variable_data = $meta_element.attr('data-variable-info');
         variable_data = JSON.parse(variable_data);
+        wms_url = $meta_element.attr('data-wms-url');
         $plotModal = $("#plot-modal");
         $tsplotModal = $("#ts-plot-modal");
         $loading = $('#view-file-loading');
         $plotter = $('#plotter');
-        animationDelay  = 1000;
+        animationDelay  = 2000;
         sliderInterval = {};
     };
 
@@ -100,19 +100,31 @@ var LIBRARY_OBJECT = (function() {
         $(".variable_table_plot").select2();
 
         variable_data.forEach(function(item,i){
-                        var new_option = new Option(item["display_name"],item["id"]);
+                        var new_option = new Option(item["display_name"]+' ('+item["units"]+')',item["id"]);
                         $("#variable_table_plot").append(new_option);
-                         var viz_option = new Option(item["display_name"],item["gs_id"]);
+                         var viz_option = new Option(item["display_name"]+' ('+item["units"]+')',item["gs_id"]);
                         $("#var_table").append(viz_option);
                     });
     };
 
     init_map = function() {
         var projection = ol.proj.get('EPSG:3857');
+        // var baseLayer = new ol.layer.Tile({
+        //     source: new ol.source.BingMaps({
+        //         key: '5TC0yID7CYaqv3nVQLKe~xWVt4aXWMJq2Ed72cO4xsA~ApdeyQwHyH_btMjQS1NJ7OHKY8BK-W-EMQMrIavoQUMYXeZIQOUURnKGBOC7UCt4',
+        //         imagerySet: 'AerialWithLabels' // Options 'Aerial', 'AerialWithLabels', 'Road'
+        //     })
+        // });
+        var attribution = new ol.Attribution({
+            html: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/rest/services/">ArcGIS</a>'
+        });
+
         var baseLayer = new ol.layer.Tile({
-            source: new ol.source.BingMaps({
-                key: '5TC0yID7CYaqv3nVQLKe~xWVt4aXWMJq2Ed72cO4xsA~ApdeyQwHyH_btMjQS1NJ7OHKY8BK-W-EMQMrIavoQUMYXeZIQOUURnKGBOC7UCt4',
-                imagerySet: 'AerialWithLabels' // Options 'Aerial', 'AerialWithLabels', 'Road'
+            crossOrigin: 'anonymous',
+            source: new ol.source.XYZ({
+                attributions: [attribution],
+                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/' +
+                'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
             })
         });
         var fullScreenControl = new ol.control.FullScreen();
@@ -121,7 +133,11 @@ var LIBRARY_OBJECT = (function() {
             projection: projection,
             zoom: 7
         });
-        wms_source = new ol.source.ImageWMS();
+        wms_source = new ol.source.ImageWMS({
+            url: wms_url,
+            params: {},
+            serverType: 'geoserver',
+            crossOrigin: 'Anonymous'});
 
         wms_layer = new ol.layer.Image({
             name: 'wms_layer',
@@ -354,7 +370,9 @@ var LIBRARY_OBJECT = (function() {
                 var viewResolution = view.getResolution();
 
                 var wms_url = current_layer.getSource().getGetFeatureInfoUrl(evt.coordinate, viewResolution, view.getProjection(), {'INFO_FORMAT': 'application/json'}); //Get the wms url for the clicked point
-            if (current_layer.get('name')=='wms_layer') {
+
+                if (current_layer.get('name')=='wms_layer') {
+
                 popup.setPosition(clickCoord);
                 if (wms_url) {
                     //Retrieving the details for clicked point via the url
@@ -449,13 +467,19 @@ var LIBRARY_OBJECT = (function() {
         var cv  = document.getElementById('cv'),
             ctx = cv.getContext('2d');
         ctx.clearRect(0,0,cv.width,cv.height);
+        var variable = $("#var_table option:selected").val();
+        var fixed;
+        if(variable=='rain' || variable=='evap'){
+            fixed = 5;
+        }else{
+            fixed = 0;
+        }
         colors.forEach(function(color,i){
             ctx.beginPath();
             ctx.fillStyle = color;
-            ctx.fillRect(i*15,0,15,20);
-            ctx.fillText(scale[i].toFixed(),i*15,30);
+            ctx.fillRect(0,i*20,20,30);
+            ctx.fillText(scale[i].toFixed(fixed),30,i*20);
         });
-
     };
 
     get_styling = function(start,end,scale){
@@ -463,12 +487,16 @@ var LIBRARY_OBJECT = (function() {
         var sld_color_string = '';
         if(scale[scale.length-1] == 0){
             var colors = chroma.scale([start,start]).mode('lab').correctLightness().colors(20);
-            //gen_color_bar(colors,scale);
+            // var colors2 = chroma.scale([start,start]).classes(20);
+            // console.log(colors2);
+            gen_color_bar(colors,scale);
             var color_map_entry = '<ColorMapEntry color="'+colors[0]+'" quantity="'+scale[0]+'" label="label1" opacity="0.7"/>';
             sld_color_string += color_map_entry;
         }else{
             var colors = chroma.scale([start,end]).mode('lab').correctLightness().colors(20);
-            //gen_color_bar(colors,scale);
+            // var colors2 = chroma.scale([start,end]).classes(20);
+            // console.log(colors2);
+            gen_color_bar(colors,scale);
             colors.forEach(function(color,i){
                 var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="0.7"/>';
                 sld_color_string += color_map_entry;
@@ -481,7 +509,7 @@ var LIBRARY_OBJECT = (function() {
 
     add_wms = function(workspace,variable,year,date_type,interval_type){
 
-        map.removeLayer(wms_layer);
+        // map.removeLayer(wms_layer);
         var layer_name = workspace+":"+variable+"_"+year+date_type;
         //console.log(layer_name);
         var index = find_gsvar_index(variable,variable_data);
@@ -501,18 +529,21 @@ var LIBRARY_OBJECT = (function() {
         </StyledLayerDescriptor>';
 
         //'SLD_BODY':sld_string
-        wms_source = new ol.source.ImageWMS({
-            url: 'http://192.168.10.75:8181/geoserver/wms',
-            params: {'LAYERS':layer_name,'SLD_BODY':sld_string},
-            serverType: 'geoserver',
-            crossOrigin: 'Anonymous'
-        });
+        // wms_source = new ol.source.ImageWMS({
+        //     url: 'http://192.168.10.75:8181/geoserver/wms',
+        //     params: {'LAYERS':layer_name,'SLD_BODY':sld_string},
+        //     serverType: 'geoserver',
+        //     crossOrigin: 'Anonymous'
+        // });
+        //
+        // wms_layer = new ol.layer.Image({
+        //     name:'wms_layer',
+        //     source: wms_source
+        // });
 
-        wms_layer = new ol.layer.Image({
-            source: wms_source
-        });
+        wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string});
 
-        map.addLayer(wms_layer);
+        // map.addLayer(wms_layer);
 
         //var layer_extent = [11.3,-26.75,58.9,14.0];
         //var transformed_extent = ol.proj.transformExtent(layer_extent,'EPSG:4326','EPSG:3857');
