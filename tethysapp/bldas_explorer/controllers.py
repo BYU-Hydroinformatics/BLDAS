@@ -13,7 +13,6 @@ def home(request):
     month_options = []
     quarter_options = []
 
-
     for i in range(1,13):
         for j in range(1,4):
             dekad = format(j, "02d")

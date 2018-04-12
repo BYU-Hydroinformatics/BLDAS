@@ -107,8 +107,6 @@ def calc_color_range(min,max):
     else:
         scale = np.arange(min, max, interval).tolist()
 
-    print(scale)
-
     return scale
 
 def get_feature_stats(suffix,geom_data,interval,year):

@@ -412,8 +412,7 @@ var LIBRARY_OBJECT = (function() {
                             select_source.clear();
                             selectedFeatures = [];
                             var selFeature = result["features"][0];
-                            console.log(result["features"][0]);
-                            console.log(result);
+
                             var format = new ol.format.GeoJSON({
                                 defaultDataProjection: 'EPSG:4326',
                                 featureProjection: 'EPSG:3857'
@@ -495,7 +494,7 @@ var LIBRARY_OBJECT = (function() {
         }else{
             var colors = chroma.scale([start,end]).mode('lab').correctLightness().colors(20);
             // var colors2 = chroma.scale([start,end]).classes(20);
-            // console.log(colors2);
+            // console.log(colors);
             gen_color_bar(colors,scale);
             colors.forEach(function(color,i){
                 var color_map_entry = '<ColorMapEntry color="'+color+'" quantity="'+scale[i]+'" label="label'+i+'" opacity="0.7"/>';
@@ -509,13 +508,13 @@ var LIBRARY_OBJECT = (function() {
 
     add_wms = function(workspace,variable,year,date_type,interval_type){
 
-        // map.removeLayer(wms_layer);
+        map.removeLayer(wms_layer);
         var layer_name = workspace+":"+variable+"_"+year+date_type;
         //console.log(layer_name);
         var index = find_gsvar_index(variable,variable_data);
 //        console.log(variable_data[index]);
         styling = get_styling(variable_data[index]["start"],variable_data[index]["end"],variable_data[index]["scale"]);
-//        console.log(styling);
+       // console.log(styling);
         var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
         <RasterSymbolizer> \
         <ColorMap type="ramp"> \
@@ -529,21 +528,21 @@ var LIBRARY_OBJECT = (function() {
         </StyledLayerDescriptor>';
 
         //'SLD_BODY':sld_string
-        // wms_source = new ol.source.ImageWMS({
-        //     url: 'http://192.168.10.75:8181/geoserver/wms',
-        //     params: {'LAYERS':layer_name,'SLD_BODY':sld_string},
-        //     serverType: 'geoserver',
-        //     crossOrigin: 'Anonymous'
-        // });
-        //
-        // wms_layer = new ol.layer.Image({
-        //     name:'wms_layer',
-        //     source: wms_source
-        // });
+        wms_source = new ol.source.ImageWMS({
+            url: wms_url,
+            params: {'LAYERS':layer_name,'SLD_BODY':sld_string},
+            serverType: 'geoserver',
+            crossOrigin: 'Anonymous'
+        });
 
-        wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string});
+        wms_layer = new ol.layer.Image({
+            name:'wms_layer',
+            source: wms_source
+        });
 
-        // map.addLayer(wms_layer);
+        // wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string});
+
+        map.addLayer(wms_layer);
 
         //var layer_extent = [11.3,-26.75,58.9,14.0];
         //var transformed_extent = ol.proj.transformExtent(layer_extent,'EPSG:4326','EPSG:3857');
@@ -688,7 +687,7 @@ var LIBRARY_OBJECT = (function() {
                 var index = find_var_index(variable,variable_data);
                 var display_name = variable_data[index]["display_name"];
                 var units = variable_data[index]["units"];
-                console.log(data.time_series);
+
                 Highcharts.chart('plotter',{
                     chart: {
                         type:'line',
