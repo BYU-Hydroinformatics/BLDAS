@@ -20,6 +20,8 @@ def get_data(request):
 
 from utils import get_point_stats,get_feature_stats,get_polygon_stats
 from django.http import JsonResponse
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.decorators import api_view, authentication_classes
 
 def get_point_ts(request):
     json_obj = {}
@@ -112,6 +114,8 @@ def get_poly_ts(request):
 
     return JsonResponse(json_obj)
 
+@api_view(['POST'])
+@authentication_classes((TokenAuthentication,))
 def get_poly_ts_post(request):
 
     json_obj = {}
