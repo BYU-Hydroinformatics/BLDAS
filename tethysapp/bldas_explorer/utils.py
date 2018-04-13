@@ -123,6 +123,7 @@ def get_feature_stats(suffix,geom_data,interval,year):
     if interval == '3m':
         months = months[2:]
     features = []
+
     for i,val in enumerate(geom_data):
         gl_data = ast.literal_eval(geom_data[i])
         features.append(gl_data)

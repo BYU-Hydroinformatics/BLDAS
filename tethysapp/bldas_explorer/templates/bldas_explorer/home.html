@@ -82,19 +82,20 @@
 {% endblock %}
 
 {% block app_content %}
-<div id="map" class="map"></div>
-<div id="popup" class="popup"></div>
-<div id="slider-container" class="slider-container">
-    <div id="slider" class="slider"></div><br>
-    <div class="slider-info"><label id="label" for="slider-date">Curent Time:</label><!-- <input type="text" id="slider-date" style="display:none;" readonly value="2002 April 16">--><span id="slider-text"></span></div><br>
-    <div class="animation-controls">
-        <div class="btn btn-success btn-group btn-xs btn-run" role="group"><span class="glyphicon glyphicon-play"></span></div>
-        <div class="btn btn-danger btn-group btn-xs btn-stop" role="group"><span class="glyphicon glyphicon-pause"></span></div>
-        <div class="btn btn-danger btn-group btn-xs btn-decrease" role="group"><span class="glyphicon glyphicon-fast-backward"></span></div>
-        <div class="btn btn-success btn-group btn-xs btn-increase" role="group"><span class="glyphicon glyphicon-fast-forward"></span></div>
+<div id="map" class="map">
+    <div id="slider-container" class="slider-container">
+        <div id="slider" class="slider"></div>
+        <div class="slider-info"><label id="label" for="slider-date">Curent Time:</label><!-- <input type="text" id="slider-date" style="display:none;" readonly value="2002 April 16">--><span id="slider-text"></span></div><br>
+        <div class="animation-controls">
+            <div class="btn btn-success btn-group btn-xs btn-run" role="group"><span class="glyphicon glyphicon-play"></span></div>
+            <div class="btn btn-danger btn-group btn-xs btn-stop" role="group"><span class="glyphicon glyphicon-pause"></span></div>
+            <div class="btn btn-danger btn-group btn-xs btn-decrease" role="group"><span class="glyphicon glyphicon-fast-backward"></span></div>
+            <div class="btn btn-success btn-group btn-xs btn-increase" role="group"><span class="glyphicon glyphicon-fast-forward"></span></div>
+        </div>
     </div>
-
 </div>
+<div id="popup" class="popup"></div>
+
 
 {% endblock %}
 
@@ -109,7 +110,7 @@
                 <h5 class="modal-title" id="help-modal-label">App Information</h5>
             </div>
             <div class="modal-body">
-              <p>Put App Description Here......</p>
+                <p>Put App Description Here......</p>
             </div>
 
         </div>
