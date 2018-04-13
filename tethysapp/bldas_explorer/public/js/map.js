@@ -281,6 +281,7 @@ var LIBRARY_OBJECT = (function() {
                 });
                 var json_object = '{"type":"Polygon","coordinates":[['+proj_coords+']]}';
                 $("#poly-lat-lon").val(json_object);
+                console.log(json_object);
                 $plotModal.find('.info').html('<b>You have selected the following polygon object '+proj_coords+'. Click on Show plot to view the Time series.</b>');
                 $plotModal.modal('show');
             }

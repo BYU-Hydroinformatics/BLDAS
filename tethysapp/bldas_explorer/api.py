@@ -18,7 +18,7 @@ def get_data(request):
     return JsonResponse(data)
 """
 
-from utils import get_point_stats,get_feature_stats
+from utils import get_point_stats,get_feature_stats,get_polygon_stats
 from django.http import JsonResponse
 
 def get_point_ts(request):
@@ -62,8 +62,13 @@ def geo_json_stats(request):
 
     json_obj = {}
 
+
     if request.is_ajax() and request.method == 'POST':
         info = request.POST
+        suffix = None
+        geom = None
+        interval = None
+        year = None
 
         suffix = info.get('variable')
         interval = info.get('interval')
@@ -77,6 +82,31 @@ def geo_json_stats(request):
 
             json_obj["time_series"] = ts
             json_obj["success"] = "success"
+        except Exception as e:
+            json_obj["error"] = "Error processing request: " + str(e)
+
+    return JsonResponse(json_obj)
+
+def get_poly_ts(request):
+
+    json_obj = {}
+
+    if request.method == 'GET':
+        info = request.GET
+
+        suffix = info.get('variable')
+        interval = info.get('interval')
+        interval = interval.lower()
+        year = info.get('year')
+        geom = info.get('geom')
+
+        try:
+
+            ts = get_polygon_stats(suffix, geom, interval, year)
+
+            json_obj["time_series"] = ts
+            json_obj["success"] = "success"
+            json_obj["interval"] = interval
         except Exception as e:
             json_obj["error"] = "Error processing request: " + str(e)
 

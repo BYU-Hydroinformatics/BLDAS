@@ -44,6 +44,11 @@ class BldasExplorer(TethysAppBase):
                 url='bldas-explorer/api/getFeatureStats',
                 controller='bldas_explorer.api.geo_json_stats'
             ),
+            UrlMap(
+                name='get-poly-stats',
+                url='bldas-explorer/api/getPolygonStats',
+                controller='bldas_explorer.api.get_poly_ts'
+            ),
         )
 
         return url_maps
