@@ -51,6 +51,7 @@ def get_point_ts(request):
             ts = get_point_stats(variable,float(lat),float(lon),interval,year)
 
             json_obj["time_series"] = ts
+            json_obj["interval"] = interval
             json_obj["success"] = "success"
         except Exception as e:
             json_obj["error"] = "Error processing request: "+str(e)

@@ -109,29 +109,29 @@ var LIBRARY_OBJECT = (function() {
 
     init_map = function() {
         var projection = ol.proj.get('EPSG:3857');
-        // var baseLayer = new ol.layer.Tile({
-        //     source: new ol.source.BingMaps({
-        //         key: '5TC0yID7CYaqv3nVQLKe~xWVt4aXWMJq2Ed72cO4xsA~ApdeyQwHyH_btMjQS1NJ7OHKY8BK-W-EMQMrIavoQUMYXeZIQOUURnKGBOC7UCt4',
-        //         imagerySet: 'AerialWithLabels' // Options 'Aerial', 'AerialWithLabels', 'Road'
-        //     })
-        // });
-        var attribution = new ol.Attribution({
-            html: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/rest/services/">ArcGIS</a>'
-        });
-
         var baseLayer = new ol.layer.Tile({
-            crossOrigin: 'anonymous',
-            source: new ol.source.XYZ({
-                attributions: [attribution],
-                url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/' +
-                'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+            source: new ol.source.BingMaps({
+                key: '5TC0yID7CYaqv3nVQLKe~xWVt4aXWMJq2Ed72cO4xsA~ApdeyQwHyH_btMjQS1NJ7OHKY8BK-W-EMQMrIavoQUMYXeZIQOUURnKGBOC7UCt4',
+                imagerySet: 'AerialWithLabels' // Options 'Aerial', 'AerialWithLabels', 'Road'
             })
         });
+        // var attribution = new ol.Attribution({
+        //     html: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/rest/services/">ArcGIS</a>'
+        // });
+        //
+        // var baseLayer = new ol.layer.Tile({
+        //     crossOrigin: 'anonymous',
+        //     source: new ol.source.XYZ({
+        //         attributions: [attribution],
+        //         url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/' +
+        //         'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+        //     })
+        // });
         var fullScreenControl = new ol.control.FullScreen();
         var view = new ol.View({
             center: ol.proj.transform([90.3,23.6], 'EPSG:4326','EPSG:3857'),
             projection: projection,
-            zoom: 7
+            zoom: 5
         });
         wms_source = new ol.source.ImageWMS({
             url: wms_url,
