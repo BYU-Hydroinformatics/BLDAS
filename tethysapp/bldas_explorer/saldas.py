@@ -270,13 +270,14 @@ def upload_tiff(dir,geoserver_rest_url,workspace,uname,pwd,variable):
             requests.put(request_url,verify=False,headers=headers,data=data,auth=(uname,pwd)) #Creating the resource on the geoserver
 
 # upload_tiff('/media/sf_Downloads/SALDAS_ROOT/temp_dd','http://192.168.10.75:8181/geoserver/rest/','saldasDD','Saldas','Sa1das##123','temp')
+
 # upload_tiff('/media/sf_Downloads/SALDAS_ROOT/temp_mm','http://192.168.10.75:8181/geoserver/rest/','saldasMM','Saldas','Sa1das##123','temp')
 # upload_tiff('/media/sf_Downloads/SALDAS_ROOT/temp_3m','http://192.168.10.75:8181/geoserver/rest/','saldas3M','Saldas','Sa1das##123','temp')
 #aggregateRastersQuarterly('/media/sf_Downloads/SALDAS_TemperatureMonthly/','/media/sf_Downloads/SALDAS_TemperatureQuarterly/')
 #aggregateRastersMonthly('/media/sf_Downloads/SALDAS_Temperature/','/media/sf_Downloads/SALDAS_TemperatureMonthly/')
 #aggregateRastersDekad('/media/sf_Downloads/SALDAS_Temperature/','/media/sf_Downloads/SALDAS_TemperatureDekad/')
 #aggregateRasterQuarterly('/media/sf_Downloads/SALDAS_Temperature/','/media/sf_Downloads/SALDAS_TemperatureDekad/')
-extractRasters(SALDAS_DIR,'/media/sf_Downloads/SALDAS_Evap/','Evap_tavg')
+#extractRasters(SALDAS_DIR,'/media/sf_Downloads/SALDAS_Evap/','Evap_tavg')
 #aggregateRastersDekad('/media/sf_Downloads/SALDAS_Temperature/','/media/sf_Downloads/SALDAS_temp_dd/','average')
 #aggregateRastersQuarterly('/media/sf_Downloads/SALDAS_rain_mm/','/media/sf_Downloads/SALDAS_rain_3m/','sum')
 #aggregateRastersQuarterly('/media/sf_Downloads/SALDAS_soilMoist_mm/','/media/sf_Downloads/SALDAS_soilMoist_3m/','average')

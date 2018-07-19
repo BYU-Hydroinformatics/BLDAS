@@ -18,10 +18,11 @@ def get_data(request):
     return JsonResponse(data)
 """
 
-from utils import get_point_stats,get_feature_stats,get_polygon_stats
-from django.http import JsonResponse
+from utils import get_point_stats,get_feature_stats,get_polygon_stats, get_polygon_statsRange
+from django.http import JsonResponse, HttpResponse
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, authentication_classes
+
 
 def get_point_ts(request):
     json_obj = {}
@@ -124,7 +125,7 @@ def get_poly_ts_post(request):
         info = request.POST
 
         suffix = info.get('variable')
-        interval = info.get('interval')  # period dd, mm, yy
+        interval = info.get('interval')
         interval = interval.lower()
         year = info.get('year')
         geom = info.get('geom')
@@ -153,9 +154,9 @@ def get_poly_ts_Range_post(request):
         suffix = info.get('variable')
         interval = info.get('interval')  # period dd, mm, yy
         interval = interval.lower()
-        year = info.get('year')
-        month = info.get('month')
-        range = info.get('range')
+        year = int(info.get('year'))
+        month = int(info.get('month'))
+        range = int(info.get('range'))
         geom = info.get('geom')
 
         try:
@@ -168,9 +169,7 @@ def get_poly_ts_Range_post(request):
             json_obj["error"] = "Error processing request: " + str(e)
 
     return JsonResponse(json_obj)
-
-
-
+    # return HttpResponse(json_obj)
 
 
 

@@ -161,12 +161,13 @@ def get_feature_stats(suffix,geom_data,interval,year):
             max.append([time_stamp, stats[0]["max"]])
             median.append([time_stamp, stats[0]["median"]])
             mean.append([time_stamp, stats[0]["mean"]])
-            jj = jj +1
+            jj = jj + 1
     #
     json_obj["min_data"] = sorted(min)
     json_obj["max_data"] = sorted(max)
     json_obj["median_data"] = sorted(median)
     json_obj["mean_data"] = sorted(mean)
+
 
     return json_obj
 
@@ -196,8 +197,8 @@ def get_polygon_stats(suffix,geom_data,interval,year):
     for i, file in enumerate(sorted(os.listdir(input_folder))):
         pattern = str(year) + '*'
         if file.endswith('.tif') and fnmatch.fnmatch(file, pattern):
-            print (str(jj) + ' ' + file  + ' --- ' + pattern)
-            stats = zonal_stats(geom_data, os.path.join(input_folder,file),stats="min mean max median")
+            stats = zonal_stats(geom_data, os.path.join(input_folder,file),
+                        stats="min mean max median")
             time_stamp = None
 
             if interval == 'dd':
@@ -229,19 +230,84 @@ def get_polygon_stats(suffix,geom_data,interval,year):
 
     return json_obj
 
-def get_polygon_statsRange(suffix,geom_data,interval,year, month, range):
+# def get_polygon_statsRange(suffix,geom_data,interval,year, month, range):
+#     # suffix = variable like temp, soilMoist, rain, evap
+#     # interval = peroid like mm, dd, yy
+#     # year = 2001
+#     json_obj = {}
+#
+#     input_folder = os.path.join(ROOT_DIR,str(suffix) + '_' + str(interval))
+#
+#     months = []
+#
+#     if interval == 'mm' or interval == '3m':
+#         for month in range(1, 13):
+#             months.append(last_day_of_month(datetime.date(int(year), month, 1)))
+#
+#     # if interval == '3m':
+#     #     months = months[2:]
+#
+#     min = []
+#     mean = []
+#     max = []
+#     median = []
+#
+#     for i, file in enumerate(sorted(os.listdir(input_folder))):
+#         if file.endswith('.tif'):
+#             stats = zonal_stats(geom_data, os.path.join(input_folder,file),
+#                         stats="min mean max median")
+#             time_stamp = None
+#
+#             if interval == 'dd':
+#                 year = file.split('.')[0][:4]
+#                 dekad = file.split('.')[0][-2:]
+#                 month = file.split('.')[0][4:6]
+#                 idx = getIndexBasedOnDecad(int(dekad),int(month),int(year))
+#                 cur_date = getDateBasedOnIndex(int(idx),int(year))
+#                 # start_date = year + '01' + '01'
+#                 # cur_date = datetime.datetime.strptime(start_date, '%Y%m%d') + datetime.timedelta(days=int(i * 10))
+#                 time_stamp = (time.mktime(cur_date.timetuple()) * 1000)
+#
+#             if interval == 'mm':
+#                 time_stamp = (time.mktime(months[i].timetuple()) * 1000)
+#
+#             if interval == '3m':
+#                 time_stamp = (time.mktime(months[i].timetuple()) * 1000)
+#
+#             min.append([time_stamp, stats[0]["min"]])
+#             max.append([time_stamp, stats[0]["max"]])
+#             median.append([time_stamp, stats[0]["median"]])
+#             mean.append([time_stamp, stats[0]["mean"]])
+#
+#     json_obj["min_data"] = sorted(min)
+#     json_obj["max_data"] = sorted(max)
+#     json_obj["median_data"] = sorted(median)
+#     json_obj["mean_data"] = sorted(mean)
+#
+#     return json_obj
+
+def get_polygon_statsRange(suffix,geom_data,interval,year, mon, rang):
     # suffix = variable like temp, soilMoist, rain, evap
     # interval = peroid like mm, dd, yy
     # year = 2001
     json_obj = {}
+    if rang >= 12: # number of months to expand, max is 12
+        rang = 12
+    mon = int(mon)
 
     input_folder = os.path.join(ROOT_DIR,str(suffix) + '_' + str(interval))
-
     months = []
 
     if interval == 'mm' or interval == '3m':
-        for month in range(1, 13):
-            months.append(last_day_of_month(datetime.date(int(year), month, 1)))
+        # for pp in range(1, 13):
+        for pp in range(mon, mon + rang):
+            if pp > 12: #if mooth is 12 then go to next year
+                mn = pp - 12
+                curYr = year + 1
+            else:
+                mn = pp
+                curYr = year
+            months.append(last_day_of_month(datetime.date(int(curYr), mn, 1)))
 
     # if interval == '3m':
     #     months = months[2:]
@@ -250,33 +316,43 @@ def get_polygon_statsRange(suffix,geom_data,interval,year, month, range):
     mean = []
     max = []
     median = []
-
+    jj = 0
     for i, file in enumerate(sorted(os.listdir(input_folder))):
-        if file.endswith('.tif'):
-            stats = zonal_stats(geom_data, os.path.join(input_folder,file),
-                        stats="min mean max median")
-            time_stamp = None
+        pattern = ''
+        for pp in range(mon, mon + rang):
+            if pp > 12: #if mooth is 12 then go to next year
+                mn = pp - 12
+                curYr = int(year) + 1
+            else:
+                mn = pp
+                curYr = year
+            pattern = str(curYr) + str(format(mn,'02d') + '*')
+            if file.endswith('.tif') and fnmatch.fnmatch(file, pattern):
+                stats = zonal_stats(geom_data, os.path.join(input_folder,file),stats="min mean max median")
+                time_stamp = None
 
-            if interval == 'dd':
-                year = file.split('.')[0][:4]
-                dekad = file.split('.')[0][-2:]
-                month = file.split('.')[0][4:6]
-                idx = getIndexBasedOnDecad(int(dekad),int(month),int(year))
-                cur_date = getDateBasedOnIndex(int(idx),int(year))
-                # start_date = year + '01' + '01'
-                # cur_date = datetime.datetime.strptime(start_date, '%Y%m%d') + datetime.timedelta(days=int(i * 10))
-                time_stamp = (time.mktime(cur_date.timetuple()) * 1000)
+                if interval == 'dd':
+                    yearDD = file.split('.')[0][:4]
+                    dekad = file.split('.')[0][-2:]
+                    month = file.split('.')[0][4:6]
+                    idx = getIndexBasedOnDecad(int(dekad),int(month),int(yearDD))
+                    cur_date = getDateBasedOnIndex(int(idx),int(yearDD))
+                    # start_date = year + '01' + '01'
+                    # cur_date = datetime.datetime.strptime(start_date, '%Y%m%d') + datetime.timedelta(days=int(i * 10))
+                    time_stamp = (time.mktime(cur_date.timetuple()) * 1000)
 
-            if interval == 'mm':
-                time_stamp = (time.mktime(months[i].timetuple()) * 1000)
+                if interval == 'mm':
+                    time_stamp = (time.mktime(months[jj].timetuple()) * 1000)
 
-            if interval == '3m':
-                time_stamp = (time.mktime(months[i].timetuple()) * 1000)
+                if interval == '3m':
+                    time_stamp = (time.mktime(months[jj].timetuple()) * 1000)
 
-            min.append([time_stamp, stats[0]["min"]])
-            max.append([time_stamp, stats[0]["max"]])
-            median.append([time_stamp, stats[0]["median"]])
-            mean.append([time_stamp, stats[0]["mean"]])
+                min.append([time_stamp, stats[0]["min"]])
+                max.append([time_stamp, stats[0]["max"]])
+                median.append([time_stamp, stats[0]["median"]])
+                mean.append([time_stamp, stats[0]["mean"]])
+                jj = jj + 1
+                break
 
     json_obj["min_data"] = sorted(min)
     json_obj["max_data"] = sorted(max)

@@ -6,13 +6,13 @@ class BldasExplorer(TethysAppBase):
     Tethys app class for BLDAS Explorer.
     """
 
-    name = 'BLDAS Explorer Beta'
+    name = 'Regional Drought Monitoring System Beta'
     index = 'bldas_explorer:home'
     icon = 'bldas_explorer/images/ICIMOD_Logo_White.gif'
     package = 'bldas_explorer'
     root_url = 'bldas-explorer'
     color = '#2980b9'
-    description = 'View SALDAS data for Bangladesh'
+    description = 'Regional Drought Monitoring System'
     tags = ''
     enable_feedback = False
     feedback_emails = []
