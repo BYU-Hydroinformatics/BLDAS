@@ -20,12 +20,12 @@
 {% endblock %}
 
 {% block header_buttons %}
-<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Graph">
-    <a data-toggle="modal" data-target="#ts-plot-modal"><span class="glyphicon glyphicon-stats"></span></a>
-</div>
-<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Help">
-    <a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>
-</div>
+<!--<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Graph">-->
+    <!--<a data-toggle="modal" data-target="#ts-plot-modal"><span class="glyphicon glyphicon-stats"></span></a>-->
+<!--</div>-->
+<!--<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Help">-->
+    <!--<a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>-->
+<!--</div>-->
 {% endblock %}
 
 {% block app_navigation_items %}
@@ -44,7 +44,23 @@
     Select a Year
 </label>
 <select  class="year_table" name="year_table" id="year_table" style="width: 100%">
-    <option value="2017">2017</option>
+    <option selected value="2017">2017</option>
+    <option value="2016">2016</option>
+    <option value="2015">2015</option>
+    <option value="2014">2014</option>
+    <option value="2013">2013</option>
+    <option value="2012">2012</option>
+    <option value="2011">2011</option>
+    <option value="2010">2010</option>
+    <option value="2009">2009</option>
+    <option value="2008">2008</option>
+    <option value="2007">2007</option>
+    <option value="2006">2006</option>
+    <option value="2005">2005</option>
+    <option value="2004">2004</option>
+    <option value="2003">2003</option>
+    <option value="2002">2002</option>
+    <option value="2001">2001</option>
 </select>
 <br>
 <br>
@@ -75,7 +91,8 @@
 </select>
 <br>
 <br>
-<b>Legend:</b>
+<!--<b>Legend:</b>-->
+<!--<div align="right"><canvas id="cv" width="200px" height="700px"></canvas></div>-->
 <div align="right"><canvas id="cv" width="200px" height="700px"></canvas></div>
 <div id="metadata" style="display: none" data-dekad-options="{{dekad_options}}" data-month-options="{{month_options}}" data-quarter-options="{{quarter_options}}" data-variable-info="{{variable_info}}" data-wms-url="{{geoserver_wms_url}}"></div>
 <!--<a href="{{eepath}}" target="_blank">Click here for the Earth Engine Link</a>-->
@@ -83,9 +100,16 @@
 
 {% block app_content %}
 <div id="map" class="map">
+
+    <div id="legends" class="legends">
+        <!--<img src="http://tethys.icimod.org:8181/geoserver/saldasDD/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&style=soilMoist&WIDTH=20&HEIGHT=10&LAYER=soilMoistsaldasDD:soilMoist_20170101&legend_options=fontName:Times%20New%20Roman;fontAntiAliasing:true;fontColor:0x000033;fontSize:8;bgColor:0xFFFFEE;dpi:180">-->
+        <img src="" id="imageBox"/>
+    </div>
+
     <div id="slider-container" class="slider-container">
         <div id="slider" class="slider"></div>
-        <div class="slider-info"><label id="label" for="slider-date">Curent Time:</label><!-- <input type="text" id="slider-date" style="display:none;" readonly value="2002 April 16">--><span id="slider-text"></span></div><br>
+        <div class="slider-info"><label id="label" for="slider-date">Curent Time:</label>
+            <!-- <input type="text" id="slider-date" style="display:none;" readonly value="2002 April 16">--><span id="slider-text"></span></div><br>
         <div class="animation-controls">
             <div class="btn btn-success btn-group btn-xs btn-run" role="group"><span class="glyphicon glyphicon-play"></span></div>
             <div class="btn btn-danger btn-group btn-xs btn-stop" role="group"><span class="glyphicon glyphicon-pause"></span></div>
@@ -93,6 +117,11 @@
             <div class="btn btn-success btn-group btn-xs btn-increase" role="group"><span class="glyphicon glyphicon-fast-forward"></span></div>
         </div>
     </div>
+    <!--<div>-->
+    <!--<b>Legend:</b>-->
+    <!--<div align="left"><canvas id="" width="200px" height="700px"></canvas></div>-->
+        <!--<div id="metadata" style="display: none" data-dekad-options="{{dekad_options}}" data-month-options="{{month_options}}" data-quarter-options="{{quarter_options}}" data-variable-info="{{variable_info}}" data-wms-url="{{geoserver_wms_url}}"></div>-->
+    <!--</div>-->
 </div>
 <div id="popup" class="popup"></div>
 
@@ -105,7 +134,7 @@
 <div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-label">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header">cv
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h5 class="modal-title" id="help-modal-label">App Information</h5>
             </div>

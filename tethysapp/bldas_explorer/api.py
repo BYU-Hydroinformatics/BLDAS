@@ -124,7 +124,7 @@ def get_poly_ts_post(request):
         info = request.POST
 
         suffix = info.get('variable')
-        interval = info.get('interval')
+        interval = info.get('interval')  # period dd, mm, yy
         interval = interval.lower()
         year = info.get('year')
         geom = info.get('geom')
@@ -132,6 +132,34 @@ def get_poly_ts_post(request):
         try:
 
             ts = get_polygon_stats(suffix, geom, interval, year)
+
+            json_obj["time_series"] = ts
+            json_obj["success"] = "success"
+            json_obj["interval"] = interval
+        except Exception as e:
+            json_obj["error"] = "Error processing request: " + str(e)
+
+    return JsonResponse(json_obj)
+
+@api_view(['POST'])
+@authentication_classes((TokenAuthentication,))
+def get_poly_ts_Range_post(request):
+
+    json_obj = {}
+
+    if request.method == 'POST':
+        info = request.POST
+
+        suffix = info.get('variable')
+        interval = info.get('interval')  # period dd, mm, yy
+        interval = interval.lower()
+        year = info.get('year')
+        month = info.get('month')
+        range = info.get('range')
+        geom = info.get('geom')
+
+        try:
+            ts = get_polygon_statsRange(suffix, geom, interval, year, month, range)
 
             json_obj["time_series"] = ts
             json_obj["success"] = "success"

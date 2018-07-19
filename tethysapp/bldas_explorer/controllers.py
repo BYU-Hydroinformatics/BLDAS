@@ -17,7 +17,7 @@ def home(request):
         for j in range(1,4):
             dekad = format(j, "02d")
             month = format(i, "02d")
-            option = [str(month)+str(dekad),'Dekad '+datetime.date(2017, i, 1).strftime('%B') +' '+str(dekad)]
+            option = [str(month)+str(dekad),'DD '+datetime.date(2017, i, 1).strftime('%B') +' '+str(dekad)]
             dekad_options.append(option)
 
     for i in range(1, 13):
@@ -29,6 +29,8 @@ def home(request):
 
     variable_info = get_variables_meta()
     geoserver_wms_url = geoserver["wms_url"]
+
+    # print (variable_info)
 
     context = {
         'variable_info': json.dumps(variable_info),
@@ -62,7 +64,6 @@ def get_plot(request):
         # polygon = request.POST['polygon']
         if interaction == 'District':
             geom_data = request.POST.getlist("geom_data[]")
-
             ts = get_feature_stats(suffix,geom_data,interval,year)
             return_obj["time_series"] = ts
             return_obj["success"] = "success"
@@ -74,7 +75,7 @@ def get_plot(request):
                 coords = geom_data.split(',')
                 lat = round(float(coords[1]), 2)
                 lon = round(float(coords[0]), 2)
-                print(geom_data)
+                #print(geom_data)
                 # ts = get_pt_ts(variable,geom_data)
                 ts = get_point_stats(suffix,lat,lon,interval,year)
                 return_obj["time_series"] = ts

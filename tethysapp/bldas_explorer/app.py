@@ -8,7 +8,7 @@ class BldasExplorer(TethysAppBase):
 
     name = 'BLDAS Explorer Beta'
     index = 'bldas_explorer:home'
-    icon = 'bldas_explorer/images/logo.png'
+    icon = 'bldas_explorer/images/ICIMOD_Logo_White.gif'
     package = 'bldas_explorer'
     root_url = 'bldas-explorer'
     color = '#2980b9'
@@ -53,6 +53,11 @@ class BldasExplorer(TethysAppBase):
                 name='get-poly-stats-post',
                 url='bldas-explorer/api/getPolygonStatsPost',
                 controller='bldas_explorer.api.get_poly_ts_post'
+            ),
+            UrlMap(
+                name='get-poly-statsRange-post',
+                url='bldas-explorer/api/getPolygonStatsRangePost',
+                controller='bldas_explorer.api.get_poly_ts_Range_post'
             ),
         )
 

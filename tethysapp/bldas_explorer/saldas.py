@@ -276,7 +276,7 @@ def upload_tiff(dir,geoserver_rest_url,workspace,uname,pwd,variable):
 #aggregateRastersMonthly('/media/sf_Downloads/SALDAS_Temperature/','/media/sf_Downloads/SALDAS_TemperatureMonthly/')
 #aggregateRastersDekad('/media/sf_Downloads/SALDAS_Temperature/','/media/sf_Downloads/SALDAS_TemperatureDekad/')
 #aggregateRasterQuarterly('/media/sf_Downloads/SALDAS_Temperature/','/media/sf_Downloads/SALDAS_TemperatureDekad/')
-#extractRasters(SALDAS_DIR,'/media/sf_Downloads/SALDAS_Evap/','Evap_tavg')
+extractRasters(SALDAS_DIR,'/media/sf_Downloads/SALDAS_Evap/','Evap_tavg')
 #aggregateRastersDekad('/media/sf_Downloads/SALDAS_Temperature/','/media/sf_Downloads/SALDAS_temp_dd/','average')
 #aggregateRastersQuarterly('/media/sf_Downloads/SALDAS_rain_mm/','/media/sf_Downloads/SALDAS_rain_3m/','sum')
 #aggregateRastersQuarterly('/media/sf_Downloads/SALDAS_soilMoist_mm/','/media/sf_Downloads/SALDAS_soilMoist_3m/','average')

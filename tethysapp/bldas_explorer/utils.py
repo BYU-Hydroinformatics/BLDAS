@@ -1,4 +1,4 @@
-import datetime
+import datetime,fnmatch
 import time,calendar
 import sys
 import os, shutil
@@ -113,15 +113,13 @@ def get_feature_stats(suffix,geom_data,interval,year):
     json_obj = {}
 
     input_folder = os.path.join(ROOT_DIR,str(suffix)+'_'+str(interval))
-
     months = []
 
     if interval == 'mm' or interval == '3m':
         for month in range(1, 13):
             months.append(last_day_of_month(datetime.date(int(year), month, 1)))
-
-    if interval == '3m':
-        months = months[2:]
+    #if interval == '3m':
+    #    months = months[2:]
     features = []
 
     for i,val in enumerate(geom_data):
@@ -134,11 +132,72 @@ def get_feature_stats(suffix,geom_data,interval,year):
     mean = []
     max = []
     median = []
+    jj = 0
     for i,file in enumerate(sorted(os.listdir(input_folder))):
-        if file.endswith('.tif'):
+        pattern = str(year) + '*'
+        if file.endswith('.tif') and fnmatch.fnmatch(file, pattern):
             stats = zonal_stats(geom_collection, os.path.join(input_folder, file),
                                 stats="min mean max median")
+            time_stamp = None
+            print('-------------------------------------------------------------------------------')
+            print (file)
+            if interval == 'dd':
+                year = file.split('.')[0][:4]
+                dekad = file.split('.')[0][-2:]
+                month = file.split('.')[0][4:6]
+                idx = getIndexBasedOnDecad(int(dekad),int(month),int(year))
+                cur_date = getDateBasedOnIndex(int(idx),int(year))
+                # start_date = year + '01' + '01'
+                # cur_date = datetime.datetime.strptime(start_date, '%Y%m%d') + datetime.timedelta(days=int(i * 10))
+                time_stamp = (time.mktime(cur_date.timetuple()) * 1000)
 
+            if interval == 'mm':
+                time_stamp = (time.mktime(months[jj].timetuple()) * 1000)
+
+            if interval == '3m':
+                time_stamp = (time.mktime(months[jj].timetuple()) * 1000)
+
+            min.append([time_stamp,stats[0]["min"]])
+            max.append([time_stamp, stats[0]["max"]])
+            median.append([time_stamp, stats[0]["median"]])
+            mean.append([time_stamp, stats[0]["mean"]])
+            jj = jj +1
+    #
+    json_obj["min_data"] = sorted(min)
+    json_obj["max_data"] = sorted(max)
+    json_obj["median_data"] = sorted(median)
+    json_obj["mean_data"] = sorted(mean)
+
+    return json_obj
+
+def get_polygon_stats(suffix,geom_data,interval,year):
+    # suffix = variable like temp, soilMoist, rain, evap
+    # interval = peroid like mm, dd, yy
+    # year = 2001
+    json_obj = {}
+
+    input_folder = os.path.join(ROOT_DIR,str(suffix) + '_' + str(interval))
+
+    months = []
+
+    if interval == 'mm' or interval == '3m':
+        for month in range(1, 13):
+            months.append(last_day_of_month(datetime.date(int(year), month, 1)))
+
+    # if interval == '3m':
+    #     months = months[2:]
+
+    min = []
+    mean = []
+    max = []
+    median = []
+    jj = 0
+
+    for i, file in enumerate(sorted(os.listdir(input_folder))):
+        pattern = str(year) + '*'
+        if file.endswith('.tif') and fnmatch.fnmatch(file, pattern):
+            print (str(jj) + ' ' + file  + ' --- ' + pattern)
+            stats = zonal_stats(geom_data, os.path.join(input_folder,file),stats="min mean max median")
             time_stamp = None
 
             if interval == 'dd':
@@ -152,16 +211,17 @@ def get_feature_stats(suffix,geom_data,interval,year):
                 time_stamp = (time.mktime(cur_date.timetuple()) * 1000)
 
             if interval == 'mm':
-                time_stamp = (time.mktime(months[i].timetuple()) * 1000)
+                time_stamp = (time.mktime(months[jj].timetuple()) * 1000)
 
             if interval == '3m':
-                time_stamp = (time.mktime(months[i].timetuple()) * 1000)
+                time_stamp = (time.mktime(months[jj].timetuple()) * 1000)
 
-            min.append([time_stamp,stats[0]["min"]])
+            min.append([time_stamp, stats[0]["min"]])
             max.append([time_stamp, stats[0]["max"]])
             median.append([time_stamp, stats[0]["median"]])
             mean.append([time_stamp, stats[0]["mean"]])
-    #
+            jj = jj + 1
+
     json_obj["min_data"] = sorted(min)
     json_obj["max_data"] = sorted(max)
     json_obj["median_data"] = sorted(median)
@@ -169,7 +229,10 @@ def get_feature_stats(suffix,geom_data,interval,year):
 
     return json_obj
 
-def get_polygon_stats(suffix,geom_data,interval,year):
+def get_polygon_statsRange(suffix,geom_data,interval,year, month, range):
+    # suffix = variable like temp, soilMoist, rain, evap
+    # interval = peroid like mm, dd, yy
+    # year = 2001
     json_obj = {}
 
     input_folder = os.path.join(ROOT_DIR,str(suffix) + '_' + str(interval))
@@ -180,8 +243,8 @@ def get_polygon_stats(suffix,geom_data,interval,year):
         for month in range(1, 13):
             months.append(last_day_of_month(datetime.date(int(year), month, 1)))
 
-    if interval == '3m':
-        months = months[2:]
+    # if interval == '3m':
+    #     months = months[2:]
 
     min = []
     mean = []
@@ -228,27 +291,25 @@ def get_point_stats(suffix,lat,lon,interval,year):
     point = Point(lon,lat)
 
     input_folder = os.path.join(ROOT_DIR, str(suffix) + '_' + str(interval))
-
     months = []
 
     if interval == 'mm' or interval == '3m':
         for month in range(1, 13):
             months.append(last_day_of_month(datetime.date(int(year), month, 1)))
-
-    if interval == '3m':
-        months = months[2:]
+        print (months)
+    # if interval == '3m':
+    #     months = months[2:]
 
     min = []
     mean = []
     max = []
     median = []
-
+    jj = 0
     for i, file in enumerate(sorted(os.listdir(input_folder))):
-        if file.endswith('.tif'):
-            stats = zonal_stats(point, os.path.join(input_folder, file),
-                                stats="min mean max median")
+        pattern = str(year) + '*'
+        if file.endswith('.tif') and fnmatch.fnmatch(file, pattern):
+            stats = zonal_stats(point, os.path.join(input_folder, file),stats="min mean max median")
             time_stamp = None
-
             if interval == 'dd':
                 year = file.split('.')[0][:4]
                 dekad = file.split('.')[0][-2:]
@@ -260,15 +321,16 @@ def get_point_stats(suffix,lat,lon,interval,year):
                 time_stamp = (time.mktime(cur_date.timetuple()) * 1000)
 
             if interval == 'mm':
-                time_stamp = (time.mktime(months[i].timetuple()) * 1000)
+                time_stamp = (time.mktime(months[jj].timetuple()) * 1000)
 
             if interval == '3m':
-                time_stamp = (time.mktime(months[i].timetuple()) * 1000)
+                time_stamp = (time.mktime(months[jj].timetuple()) * 1000)
 
             min.append([time_stamp, stats[0]["min"]])
             max.append([time_stamp, stats[0]["max"]])
             median.append([time_stamp, stats[0]["median"]])
             mean.append([time_stamp, stats[0]["mean"]])
+            jj = jj +1
 
     json_obj["min_data"] = sorted(min)
     json_obj["max_data"] = sorted(max)

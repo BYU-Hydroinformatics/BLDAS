@@ -39,6 +39,7 @@ var LIBRARY_OBJECT = (function() {
         slider_max,
         styling,
         variable_data,
+        variable_wms,
         $tsplotModal,
         wms_url,
         wms_layer,
@@ -115,18 +116,6 @@ var LIBRARY_OBJECT = (function() {
                 imagerySet: 'AerialWithLabels' // Options 'Aerial', 'AerialWithLabels', 'Road'
             })
         });
-        // var attribution = new ol.Attribution({
-        //     html: 'Tiles © <a href="https://services.arcgisonline.com/ArcGIS/rest/services/">ArcGIS</a>'
-        // });
-        //
-        // var baseLayer = new ol.layer.Tile({
-        //     crossOrigin: 'anonymous',
-        //     source: new ol.source.XYZ({
-        //         attributions: [attribution],
-        //         url: 'https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/' +
-        //         'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}'
-        //     })
-        // });
         var fullScreenControl = new ol.control.FullScreen();
         var view = new ol.View({
             center: ol.proj.transform([90.3,23.6], 'EPSG:4326','EPSG:3857'),
@@ -254,9 +243,7 @@ var LIBRARY_OBJECT = (function() {
                 draw.on('drawstart', function (e) {
                     vector_source.clear();
                 });
-
             }
-
         };
 
         vector_layer.getSource().on('addfeature', function(event){
@@ -306,8 +293,6 @@ var LIBRARY_OBJECT = (function() {
             return data;
 
         }
-
-
         $('#interaction-type').change(function (e) {
             featureType = $(this).find('option:selected').val();
             clear_coords();
@@ -464,22 +449,22 @@ var LIBRARY_OBJECT = (function() {
     };
 
     gen_color_bar = function(colors,scale){
-        var cv  = document.getElementById('cv'),
-            ctx = cv.getContext('2d');
-        ctx.clearRect(0,0,cv.width,cv.height);
-        var variable = $("#var_table option:selected").val();
-        var fixed;
-        if(variable=='rain' || variable=='evap'){
-            fixed = 5;
-        }else{
-            fixed = 0;
-        }
-        colors.forEach(function(color,i){
-            ctx.beginPath();
-            ctx.fillStyle = color;
-            ctx.fillRect(0,i*20,20,30);
-            ctx.fillText(scale[i].toFixed(fixed),30,i*20);
-        });
+        // var cv  = document.getElementById('cv'),
+        //     ctx = cv.getContext('2d');
+        // ctx.clearRect(0,0,cv.width,cv.height);
+        // var variable = $("#var_table option:selected").val();
+        // var fixed;
+        // if(variable=='rain' || variable=='evap'){
+        //     fixed = 5;
+        // }else{
+        //     fixed = 0;
+        // }
+        // colors.forEach(function(color,i){
+        //     ctx.beginPath();
+        //     ctx.fillStyle = color;
+        //     ctx.fillRect(0,i*20,20,30);
+        //     ctx.fillText(scale[i].toFixed(fixed),30,i*20);
+        // });
     };
 
     get_styling = function(start,end,scale){
@@ -513,25 +498,16 @@ var LIBRARY_OBJECT = (function() {
         var layer_name = workspace+":"+variable+"_"+year+date_type;
         //console.log(layer_name);
         var index = find_gsvar_index(variable,variable_data);
-//        console.log(variable_data[index]);
-        styling = get_styling(variable_data[index]["start"],variable_data[index]["end"],variable_data[index]["scale"]);
-       // console.log(styling);
-        var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
-        <RasterSymbolizer> \
-        <ColorMap type="ramp"> \
-        <ColorMapEntry color="#f00" quantity="-9999" label="label0" opacity="0"/>'+
-            styling+'</ColorMap>\
-        </RasterSymbolizer>\
-        </Rule>\
-        </FeatureTypeStyle>\
-        </UserStyle>\
-        </NamedLayer>\
-        </StyledLayerDescriptor>';
+
+        variable_wms = variable;
+        document.getElementById('imageBox').src ="http://tethys.icimod.org:8181/geoserver/saldas" + interval_type + "/wms?REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&style=" +
+                variable + "&WIDTH=10&HEIGHT=10&LAYER=" + layer_name + "&legend_options=fontName:Times%20New%20Roman;fontAntiAliasing:true;fontColor:0x000033;fontSize:6;bgColor:0xFFFFEE;dpi:180";
 
         //'SLD_BODY':sld_string
         wms_source = new ol.source.ImageWMS({
             url: wms_url,
-            params: {'LAYERS':layer_name,'SLD_BODY':sld_string},
+            // params: {'LAYERS':layer_name,'SLD_BODY':sld_string},
+            params: {'LAYERS':layer_name,'STYLES':variable_wms},
             serverType: 'geoserver',
             crossOrigin: 'Anonymous'
         });
@@ -555,19 +531,9 @@ var LIBRARY_OBJECT = (function() {
     update_wms = function(workspace,variable,year,date_type,interval_type){
 
         var layer_name = workspace+":"+variable+"_"+year+date_type;
-        var sld_string = '<StyledLayerDescriptor version="1.0.0"><NamedLayer><Name>'+layer_name+'</Name><UserStyle><FeatureTypeStyle><Rule>\
-        <RasterSymbolizer> \
-        <ColorMap type="ramp"> \
-        <ColorMapEntry color="#f00" quantity="-9999" label="label0" opacity="0"/>'+
-            styling+'</ColorMap>\
-        </RasterSymbolizer>\
-        </Rule>\
-        </FeatureTypeStyle>\
-        </UserStyle>\
-        </NamedLayer>\
-        </StyledLayerDescriptor>';
+        // wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string});
 
-        wms_source.updateParams({'LAYERS':layer_name,'SLD_BODY':sld_string});
+         wms_source.updateParams({'LAYERS':layer_name,'STYLES':variable_wms});
 
     };
 
@@ -879,7 +845,7 @@ var LIBRARY_OBJECT = (function() {
             var variable = ($("#var_table option:selected").val());
             var workspace = "saldas"+interval_type;
             update_wms(workspace,variable,year,date_value,interval_type);
-
+            // alert(variable);
         });
 
     });
