@@ -20,12 +20,12 @@
 {% endblock %}
 
 {% block header_buttons %}
-<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Graph">
-    <a data-toggle="modal" data-target="#ts-plot-modal"><span class="glyphicon glyphicon-stats"></span></a>
-</div>
-<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Help">
-    <a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>
-</div>
+<!--<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Graph">-->
+    <!--<a data-toggle="modal" data-target="#ts-plot-modal"><span class="glyphicon glyphicon-stats"></span></a>-->
+<!--</div>-->
+<!--<div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Help">-->
+    <!--<a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>-->
+<!--</div>-->
 {% endblock %}
 
 {% block app_navigation_items %}
@@ -44,7 +44,23 @@
     Select a Year
 </label>
 <select  class="year_table" name="year_table" id="year_table" style="width: 100%">
-    <option value="2017">2017</option>
+    <option selected value="2017">2017</option>
+    <option value="2016">2016</option>
+    <option value="2015">2015</option>
+    <option value="2014">2014</option>
+    <option value="2013">2013</option>
+    <option value="2012">2012</option>
+    <option value="2011">2011</option>
+    <option value="2010">2010</option>
+    <option value="2009">2009</option>
+    <option value="2008">2008</option>
+    <option value="2007">2007</option>
+    <option value="2006">2006</option>
+    <option value="2005">2005</option>
+    <option value="2004">2004</option>
+    <option value="2003">2003</option>
+    <option value="2002">2002</option>
+    <option value="2001">2001</option>
 </select>
 <br>
 <br>
@@ -73,9 +89,9 @@
     <option value="Polygon">Polygon</option>
     <option value="District">Select a State</option>
 </select>
-<br>
-<br>
-<b>Legend:</b>
+<!--<br>-->
+<!--<br>-->
+<!--<b>Legend:</b>-->
 <div align="right"><canvas id="cv" width="200px" height="700px"></canvas></div>
 <div id="metadata" style="display: none" data-dekad-options="{{dekad_options}}" data-month-options="{{month_options}}" data-quarter-options="{{quarter_options}}" data-variable-info="{{variable_info}}" data-wms-url="{{geoserver_wms_url}}"></div>
 <!--<a href="{{eepath}}" target="_blank">Click here for the Earth Engine Link</a>-->
@@ -83,6 +99,11 @@
 
 {% block app_content %}
 <div id="map" class="map">
+
+    <div id="legends" class="legends">
+        <img src="" id="imageBox" />
+    </div>
+
     <div id="slider-container" class="slider-container">
         <div id="slider" class="slider"></div>
         <div class="slider-info"><label id="label" for="slider-date">Curent Time:</label><!-- <input type="text" id="slider-date" style="display:none;" readonly value="2002 April 16">--><span id="slider-text"></span></div><br>

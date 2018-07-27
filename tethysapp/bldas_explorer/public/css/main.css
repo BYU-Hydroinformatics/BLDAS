@@ -21,6 +21,14 @@
     position:relative;
 }
 
+.legends{
+    position:absolute;
+    z-index: 9999;
+    border-radius: 3px;
+    right: 5px;
+    top: 10px;
+}
+
 .slider-container{
     height:100px;
     position:absolute;
