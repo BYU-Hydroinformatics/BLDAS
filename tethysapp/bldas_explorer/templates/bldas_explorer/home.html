@@ -29,9 +29,6 @@
 {% endblock %}
 
 {% block app_navigation_items %}
-
-
-<br><br>
 <label>
     Select a Variable
 </label>
@@ -44,7 +41,8 @@
     Select a Year
 </label>
 <select  class="year_table" name="year_table" id="year_table" style="width: 100%">
-    <option selected value="2017">2017</option>
+    <option selected value="2018">2018</option>
+    <option value="2017">2017</option>
     <option value="2016">2016</option>
     <option value="2015">2015</option>
     <option value="2014">2014</option>
@@ -155,8 +153,8 @@
                 <h2 class="modal-title" id="plot-modal-label">Plot Confirmation</h2>
             </div>
             <div class="modal-body">
-                <div class="info"></div>
-                <div class="warning"></div>
+                <!--<div class="info"></div>-->
+                <!--<div class="warning"></div>-->
                 <form id="get-vic-plot" name="get-vic-plot" action="get-vic-plot/" method="POST">
                     {% csrf_token %}
 

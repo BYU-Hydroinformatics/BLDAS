@@ -8,4 +8,4 @@ geoserver = {'rest_url':'http://tethys.icimod.org:8181/geoserver/rest',
 SALDAS_DIR = '/media/sf_Downloads/SALDAS/'
 
 #ROOT_DIR = '/home/kshakya/SALDAS_ROOT/'
-ROOT_DIR = '/home/kshakya/zData/GROUPED_Avg/'
+ROOT_DIR = r'E:/GROUPED_Avg/'

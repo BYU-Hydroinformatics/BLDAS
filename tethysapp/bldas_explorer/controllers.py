@@ -29,6 +29,7 @@ def home(request):
 
     variable_info = get_variables_meta()
     geoserver_wms_url = geoserver["wms_url"]
+    # print (dekad_options)
 
     context = {
         'variable_info': json.dumps(variable_info),
@@ -74,7 +75,7 @@ def get_plot(request):
                 coords = geom_data.split(',')
                 lat = round(float(coords[1]), 2)
                 lon = round(float(coords[0]), 2)
-                print(geom_data)
+                # print(geom_data)
                 # ts = get_pt_ts(variable,geom_data)
                 ts = get_point_stats(suffix,lat,lon,interval,year)
                 return_obj["time_series"] = ts

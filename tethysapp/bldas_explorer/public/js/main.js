@@ -233,6 +233,7 @@ function deleteRowData(submit_button, data, div_id) {
 }
 
 //submit row data
+//submit row data
 function submitRowData(submit_button, data, safe_to_submit) {
     if(safe_to_submit.val) {
         //give user information
