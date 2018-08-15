@@ -5,10 +5,12 @@ from utils import *
 from django.http import JsonResponse
 from config import *
 
+import plotly.graph_objs as go
+import netCDF4 as nc
+import datetime as dt
+import numpy as np
+
 def home(request):
-    """
-    Controller for the app home page.
-    """
     dekad_options = []
     month_options = []
     quarter_options = []
@@ -29,7 +31,6 @@ def home(request):
 
     variable_info = get_variables_meta()
     geoserver_wms_url = geoserver["wms_url"]
-    # print (dekad_options)
 
     context = {
         'variable_info': json.dumps(variable_info),
@@ -75,7 +76,6 @@ def get_plot(request):
                 coords = geom_data.split(',')
                 lat = round(float(coords[1]), 2)
                 lon = round(float(coords[0]), 2)
-                # print(geom_data)
                 # ts = get_pt_ts(variable,geom_data)
                 ts = get_point_stats(suffix,lat,lon,interval,year)
                 return_obj["time_series"] = ts
@@ -96,3 +96,71 @@ def get_plot(request):
                 return_obj["error"] = "Error processing request: " + str(e)
 
     return JsonResponse(return_obj)
+
+def get_lis(request):
+    get_data = request.GET
+
+    try:
+        comid = get_data.get('comid')
+        units = 'metric'
+
+        path = os.path.join(LIS_DIR)
+        filename = [f for f in os.listdir(path) if 'Qout' in f]
+        res = nc.Dataset(os.path.join(LIS_DIR, filename[0]), 'r')
+
+        dates_raw = res.variables['time'][:]
+
+        dates = []
+        for d in dates_raw:
+            dates.append(dt.datetime.fromtimestamp(d))
+
+        comid_list = res.variables['rivid'][:]
+        try:
+            comid_index = int(np.where(comid_list == int(comid))[0])
+        except Exception as e:
+            print str(e)
+            return JsonResponse({'error': 'No matching COMID found for the feature in our dataset. Please check the dataset or the feature layer'})
+
+        values = []
+        for l in list(res.variables['Qout'][:]):
+            values.append(float(l[comid_index]))
+
+        # --------------------------------------
+        # Chart Section
+        # --------------------------------------
+        series = go.Scatter(
+            name='LDAS',
+            x=dates,
+            y=values,
+        )
+
+        layout = go.Layout(
+            title="LDAS Streamflow <br><sub>Nepal (South Asia): {0}</sub>".format(comid),
+            xaxis=dict(
+                title='Date',
+            ),
+            yaxis=dict(
+                title='Streamflow ({}<sup>3</sup>/s)'.format(get_units_title(units))
+            )
+        )
+
+        chart_obj = PlotlyView(
+            go.Figure(data=[series],
+                      layout=layout)
+        )
+
+        context = {
+            'gizmo_object': chart_obj,
+        }
+
+        return render(request,'bldas_explorer/gizmo.html', context)
+
+    except Exception as e:
+        print str(e)
+        return JsonResponse({'error': 'No LIS data found for the selected reach.'})
+
+def get_units_title(unit_type):
+    units_title = "m"
+    if unit_type == 'english':
+        units_title = "ft"
+    return units_title

@@ -12,9 +12,12 @@
     margin:0;
     height: 100%;
 }
-#app-content-wrapper #app-content{
 
+.wide-plot {
+    height: 100%;
+    min-width: 960px;
 }
+
 #map{
     height:100%;
     width:100%;

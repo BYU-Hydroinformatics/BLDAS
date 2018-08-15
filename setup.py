@@ -10,17 +10,17 @@ app_class = 'bldas_explorer.app:BldasExplorer'
 app_package_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tethysapp', app_package)
 
 ### Python Dependencies ###
-dependencies = []
+dependencies = ['rasterio']
 
 setup(
     name=release_package,
-    version='0.0.1',
+    version='1.0.0',
     tags='',
-    description='View SALDAS data for Bangladesh',
+    description='View SALDAS data',
     long_description='',
     keywords='',
-    author='',
-    author_email='',
+    author='Rohit Khattar',
+    author_email='rohitkh@byu.edu',
     url='',
     license='',
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),

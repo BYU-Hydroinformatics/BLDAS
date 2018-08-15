@@ -1,6 +1,10 @@
 {% extends "bldas_explorer/base.html" %}
 {% load tethys_gizmos staticfiles %}
 
+{% block import_gizmos %}
+    {% import_gizmo_dependency plotly_view %}
+{% endblock %}
+
 {% block styles %}
 {{ block.super }}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
@@ -126,23 +130,7 @@
 
 {% endblock %}
 
-{# Use the after_app_content block for modals #}
 {% block after_app_content %}
-<!-- Example Modal -->
-<div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-label">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">cv
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h5 class="modal-title" id="help-modal-label">App Information</h5>
-            </div>
-            <div class="modal-body">
-                <p>Put App Description Here......</p>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <!-- Get Plot Modal -->
 <div class="modal fade" id="plot-modal" tabindex="-1" role="dialog" aria-labelledby="plot-modal-label">
@@ -150,50 +138,55 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h2 class="modal-title" id="plot-modal-label">Plot Confirmation</h2>
+                <h2 class="modal-title" id="plot-modal-label">Plot Details</h2>
             </div>
             <div class="modal-body">
-                <!--<div class="info"></div>-->
-                <!--<div class="warning"></div>-->
                 <form id="get-vic-plot" name="get-vic-plot" action="get-vic-plot/" method="POST">
                     {% csrf_token %}
-
                     <label for="variable_table_plot">
                         Select a variable
                     </label>
-                    <select  class="variable_table_plot" name="variable_table_plot" id="variable_table_plot" style="width: 100%">
-
+                    <select class="variable_table_plot" name="variable_table_plot" id="variable_table_plot" style="width: 100%">
                     </select>
                     <br>
                     <br>
                     <input type="text" name="point-lat-lon" id="point-lat-lon" hidden>
                     <input type="text" name="poly-lat-lon" id="poly-lat-lon" hidden>
-
-                    <!--<input type="text" name="shp-lat-lon" id="shp-lat-lon" hidden>-->
                     <button type="button" id="btn-get-plot" name="btn-get-plot" class="btn btn-default">Show Plot</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
-
+</div>
 <!--Show VIC Plot -->
 <div class="modal fade" id="ts-plot-modal" tabindex="-1" role="dialog" aria-labelledby="ts-plot-modal-label">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content wide-plot">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h2 class="modal-title" id="ts-plot-modal-label">Time Series Plot</h2>
             </div>
             <div class="modal-body">
-                <div>
-                    <div class="chart-wrapper">
-                        <div class="chart-inner">
-                            <div align="center" class="flex-container-row"><img id="view-file-loading" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
-                            <div id="plotter" name="plotter" style="height:350px;width:100%" ></div>
-                            <div id="info" class="hidden info"></div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a id="data" href="#data" aria-controls="data" role="tab" data-toggle="tab">Historical</a></li>
+                    <li role="presentation"><a id="forecast_link" href="#forecast" aria-controls="forecast" role="tab" data-toggle="tab">Forecast</a></li>
+                </ul>
+                <div role="tabpanel" class="tab-pane active" id="data">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div>
+                                <div class="chart-wrapper">
+                                    <div class="chart-inner">
+                                        <div align="center" class="flex-container-row"><img id="view-file-loading" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
+                                        <div id="chartloc"></div>
+                                        <div id="plotter" name="plotter" style="height:350px;width:100%"></div>
+                                        <div id="info" class="hidden info"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

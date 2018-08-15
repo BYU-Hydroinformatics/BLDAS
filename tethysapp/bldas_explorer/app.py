@@ -35,6 +35,11 @@ class BldasExplorer(TethysAppBase):
                 controller='bldas_explorer.controllers.get_plot'
             ),
             UrlMap(
+                name='get-lis-time-series',
+                url='bldas-explorer/get-lis-time-series',
+                controller='bldas_explorer.controllers.get_lis'
+            ),
+            UrlMap(
                 name='get-point-stats',
                 url='bldas-explorer/api/getPointStats',
                 controller='bldas_explorer.api.get_point_ts'
