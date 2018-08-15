@@ -1,0 +1,685 @@
+[2018-08-15 05:51:51,954] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 27, in get_forecast_streamflow_csv
+    get_forecast_stats(request)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 203, in get_forecast_stats
+    filename = [f for f in os.listdir(path) if 'Qout' in f]
+NameError: global name 'path' is not defined
+[2018-08-15 05:52:33,358] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 27, in get_forecast_streamflow_csv
+    get_forecast_stats(request)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 203, in get_forecast_stats
+    filename = [f for f in os.listdir(path) if 'Qout' in f]
+NameError: global name 'path' is not defined
+[2018-08-15 05:53:13,619] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 27, in get_forecast_streamflow_csv
+    get_forecast_stats(request)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 203, in get_forecast_stats
+    filename = [f for f in os.listdir(path) if 'Qout' in f]
+NameError: global name 'path' is not defined
+[2018-08-15 05:53:49,544] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 27, in get_forecast_streamflow_csv
+    get_forecast_stats(request)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 203, in get_forecast_stats
+    filename = [f for f in os.listdir(path) if 'Qout' in f]
+NameError: global name 'path' is not defined
+[2018-08-15 05:54:44,059] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 27, in get_forecast_streamflow_csv
+    get_forecast_stats(request)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 203, in get_forecast_stats
+    filename = [f for f in os.listdir(path) if 'Qout' in f]
+NameError: global name 'path' is not defined
+[2018-08-15 05:55:24,510] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 27, in get_forecast_streamflow_csv
+    get_forecast_stats(request)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 202, in get_forecast_stats
+    filename = [f for f in os.listdir(path) if 'Qout' in f]
+NameError: global name 'path' is not defined
+[2018-08-15 05:55:37,981] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 27, in get_forecast_streamflow_csv
+    get_forecast_stats(request)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 202, in get_forecast_stats
+    filename = [f for f in os.listdir(path) if 'Qout' in f]
+NameError: global name 'path' is not defined
+[2018-08-15 06:01:56,878] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 212, in get_forecast_stats
+    if stat_type == 'high_res' or not stat_type:
+NameError: global name 'stat_type' is not defined
+[2018-08-15 06:01:56,884] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 27, in get_forecast_streamflow_csv
+    get_forecast_stats(request)
+ValueError: need more than 1 value to unpack
+[2018-08-15 06:13:48,888] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 212, in get_forecast_stats
+    if stat_type == 'high_res' or not stat_type:
+NameError: global name 'stat_type' is not defined
+[2018-08-15 06:13:48,893] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:15:14,236] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 213, in get_forecast_stats
+    if stat_type != 'high_res' or not stat_type:
+NameError: global name 'stat_type' is not defined
+[2018-08-15 06:15:14,236] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:24:07,910] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 215, in get_forecast_stats
+    .sel(rivid=river_id).Qout
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:24:07,916] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:24:46,896] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 214, in get_forecast_stats
+    .sel(rivid=river_id).Qout
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:24:46,901] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:25:40,700] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 214, in get_forecast_stats
+    .sel(rivid=river_id).Qout
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:25:40,703] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:26:46,587] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 217, in get_forecast_stats
+    .sel(rivid=river_id).Qout
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:26:46,594] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:27:18,665] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 213, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:27:18,668] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:27:19,318] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 213, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:27:19,319] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:27:44,689] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 214, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:27:44,692] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:28:28,622] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 214, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id).Qout
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:28:28,625] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:28:37,308] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 214, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id).Qout
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:28:37,309] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 06:28:57,223] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 215, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id).Qout
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'236261'
+[2018-08-15 06:28:57,232] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:20:38,963] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 215, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id).Qout
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'257355'
+[2018-08-15 07:20:38,966] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:21:37,834] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 215, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).Qout.sel(rivid=river_id)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataarray.py", line 784, in sel
+    indexers=indexers, drop=drop, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'257355'
+[2018-08-15 07:21:37,846] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:24:20,833] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 216, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).Qout.sel(rivid=river_id)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataarray.py", line 784, in sel
+    indexers=indexers, drop=drop, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'257355'
+[2018-08-15 07:24:20,844] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:24:51,618] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 216, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).Qout.sel(rivid=river_id, time="2001")
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataarray.py", line 784, in sel
+    indexers=indexers, drop=drop, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'257355'
+[2018-08-15 07:24:51,621] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:28:03,036] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 216, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).Qout.sel(rivid=river_id, time="2001")
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataarray.py", line 784, in sel
+    indexers=indexers, drop=drop, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'257355'
+[2018-08-15 07:28:03,050] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:31:39,492] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 217, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'257355'
+[2018-08-15 07:31:39,495] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:34:43,604] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 217, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id, nv=0)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'257355'
+[2018-08-15 07:34:43,607] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:35:52,268] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 217, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).isel(rivid=river_id)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1427, in isel
+    new_var = var.isel(indexers=var_indexers)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/variable.py", line 854, in isel
+    return self[tuple(key)]
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/variable.py", line 620, in __getitem__
+    dims, indexer, new_order = self._broadcast_indexes(key)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/variable.py", line 478, in _broadcast_indexes
+    return self._broadcast_indexes_outer(key)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/variable.py", line 543, in _broadcast_indexes_outer
+    return dims, OuterIndexer(tuple(new_key)), None
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 378, in __init__
+    'integer dtype: {!r}'.format(k))
+TypeError: invalid indexer array, does not have integer dtype: array(u'257355', dtype='<U6')
+[2018-08-15 07:35:52,274] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:36:23,615] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 217, in get_forecast_stats
+    print xarray.open_dataset(forecast_nc, autoclose=True).sel(rivid=river_id, time='2018')
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/dataset.py", line 1509, in sel
+    self, indexers=indexers, method=method, tolerance=tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/coordinates.py", line 355, in remap_label_indexers
+    obj, v_indexers, method=method, tolerance=tolerance
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 250, in remap_label_indexers
+    dim, method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 179, in convert_label_indexer
+    indexer = get_loc(index, label.item(), method, tolerance)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/xarray/core/indexing.py", line 109, in get_loc
+    return index.get_loc(label, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/miniconda/envs/tethys/lib/python2.7/site-packages/pandas/core/indexes/base.py", line 2527, in get_loc
+    return self._engine.get_loc(self._maybe_cast_indexer(key))
+  File "pandas/_libs/index.pyx", line 117, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 141, in pandas._libs.index.IndexEngine.get_loc
+KeyError: u'257355'
+[2018-08-15 07:36:23,618] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:39:51,284] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 219, in get_forecast_stats
+    pd.Index(ensemble_index_list, name='ensemble'))
+NameError: global name 'pd' is not defined
+[2018-08-15 07:39:51,284] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:40:28,408] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 219, in get_forecast_stats
+    pd.Index(ensemble_index_list, name='ensemble'))
+NameError: global name 'pd' is not defined
+[2018-08-15 07:40:28,408] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-15 07:44:03,104] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 222, in get_forecast_stats
+    pd.Index(ensemble_index_list, name='ensemble'))
+NameError: global name 'pd' is not defined
+[2018-08-15 07:44:03,105] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
+    print forecast_statistics
+UnboundLocalError: local variable 'forecast_statistics' referenced before assignment

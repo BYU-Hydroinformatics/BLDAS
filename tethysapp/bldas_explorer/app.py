@@ -64,6 +64,11 @@ class BldasExplorer(TethysAppBase):
                 url='bldas-explorer/api/getPolygonStatsRangePost',
                 controller='bldas_explorer.api.get_poly_ts_Range_post'
             ),
+            # API DECLARATIONS
+            UrlMap(name='waterml',
+                    url='bldas-explorer/api/GetForecast',
+                    controller='bldas_explorer.controllers_api'
+                               '.get_forecast'),
         )
 
         return url_maps

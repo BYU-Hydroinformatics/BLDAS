@@ -6,7 +6,8 @@ This app is created to run in the [Tethys Platform Environment](https://github.c
 
 * Tethys Platform (CKAN, PostgresQL, GeoServer)
 * rasterio
-* rasterstats use 0.12.1. Some issue with the latest one on conda-forge
+* rasterstats
+* xarray
 
 ## Install Tathys Platform
 
@@ -22,8 +23,29 @@ The below dependencies will be installed when you run the following command
 python setup.py develop
 ```
 
-## Future Planned Changes
+## API Usage
 
+### GetForecast for Forecasts Data
+
+| Parameter | Description            | Example       | 
+| ----------- | --------------- | --------- | 
+| watershed_name OP     | CREATE          | READ      | 
+| subbasin_name       | C dogs | List dogs |
+| river_id  | River/Stream ID           | 2345678   | 
+| return_format       | Currently only csv is supported | css |
+| units  | Set to ‘english’ to get ft3/s. (Optional)           | english   | 
+
+Example
+```python
+>>> import requests
+>>> request_params = dict(watershed_name='Nepal', subbasin_name='Central', river_id=5,  return_format='csv')
+>>> request_headers = dict(Authorization='Token asdfqwer1234')
+>>> res = requests.get('[HOST Portal]/apps/bldas-explorer//api/GetForecast/', params=request_params, headers=request_headers)
+```
+##
+
+## Future Planned Changes
+* Expansion of API to support more methods and data as they come in.
 
 ## Changelog
 
@@ -35,16 +57,11 @@ python setup.py develop
 * LIS Data reader and visualization as forecast
 * Layer for nepal drainage lines
 * ReadMe
-
+* API for Streamflow Data
 
 ### Changed
 
 * gitignore cleanup
-* 
-
-### Removed
-
-* 
 
 ## [1.0.0] - 2018/08/14
 
