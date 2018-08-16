@@ -5,9 +5,9 @@ geoserver = {'rest_url': 'http://tethys.icimod.org:8181/geoserver/rest',
              'password': 'geoserver',
              'workspace': 'hiwat'}
 
-SALDAS_DIR = '/Users/student/Desktop/git.nosync/nepal/BLDAS'
+LIS_DIR = '/home/kshakya/lis/lisNepal/nepal-national/'
+FOREACAST_DIR = '/home/kshakya/packages/South_Asia-Forecast/output/nepal-highres/'
 
-ROOT_DIR = '/Users/student/Desktop/git.nosync/nepal/'
-
-LIS_DIR = '/Users/student/Desktop/git.nosync/nepal/lis/'
-FOREACAST_DIR = '/Users/student/Desktop/git.nosync/nepal/lis/forecast/'
+SALDAS_DIR = '/media/sf_Downloads/SALDAS/'
+#ROOT_DIR = '/home/kshakya/SALDAS_ROOT/'
+ROOT_DIR = '/home/kshakya/zData/GROUPED_Avg/'
