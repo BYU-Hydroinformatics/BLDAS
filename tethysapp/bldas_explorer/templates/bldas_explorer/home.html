@@ -170,40 +170,23 @@
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a id="historical" href="#historical" aria-controls="historical" role="tab" data-toggle="tab">Historical</a></li>
-                    <li role="presentation"><a id="forecast_link" href="#forecast" aria-controls="forecast" role="tab" data-toggle="tab">Forecast</a></li>
+                    <li role="presentation" class="active"><a href="#historical" role="tab" data-toggle="tab">Historical</a>
+                    </li>
+                    <li role="presentation"><a href="#forecast" role="tab" data-toggle="tab">Forecast</a>
+                    </li>
                 </ul>
-                <div class="tab-content clearfix">
-                <div role="tabpanel" class="tab-pane fade in active" id="historical">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div>
-                                <div class="chart-wrapper">
-                                    <div align="center" class="flex-container-row"><img id="loading-historical" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
-                                    <div class="chart-inner" id="historicalChart">
-                                        <div id="info" class="hidden info"></div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="container-fluid">
+                    <div class="tab-content">
+                        <div id="historical" role="tabpanel" class="tab-pane fade in active">
+                            <div align="center" class="flex-container-row"><img id="loading-historical" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
+                            <div class="chart-inner" id="historicalChart"></div>
+                        </div>
+                        <div id="forecast" role="tabpanel" class="tab-pane fade">
+                            <div align="center" class="flex-container-row"><img id="loading-forecast" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
+                            <div class="chart-inner" id="forecastChart"></div>
                         </div>
                     </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="forecast">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div>
-                                <div class="chart-wrapper">
-                                    <div align="center" class="flex-container-row"><img id="loading-forecast" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
-                                    <div class="chart-inner" id="forecastChart">
-                                        <div id="info" class="hidden info"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <br/>
             </div>
         </div>
     </div>

@@ -10,4 +10,4 @@ SALDAS_DIR = '/Users/student/Desktop/git.nosync/nepal/BLDAS'
 ROOT_DIR = '/Users/student/Desktop/git.nosync/nepal/'
 
 LIS_DIR = '/Users/student/Desktop/git.nosync/nepal/lis/'
-FOREACAST_DIR = '/Users/student/Desktop/git.nosync/nepal/lis/'
+FOREACAST_DIR = '/Users/student/Desktop/git.nosync/nepal/lis/forecast/'

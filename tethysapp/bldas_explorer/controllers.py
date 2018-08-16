@@ -152,9 +152,9 @@ def get_chart_from_nc(ncFilePath, comid, units):
         width='100%',
         height='100%',
         margin=go.Margin(
-            l=50,
+            l=80,
             r=50,
-            b=20,
+            b=50,
             t=100,
             pad=4
             )
