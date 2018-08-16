@@ -504,7 +504,8 @@ var LIBRARY_OBJECT = (function() {
                     });
                 } else {
                     if (wms_url) {
-                        $("#chartloc").html('');
+                        $("#historicalChart").html('');
+                        $("#forecastChart").html('');
                         $.ajax({
                             type: "GET",
                             url: wms_url,
@@ -705,26 +706,50 @@ var LIBRARY_OBJECT = (function() {
     get_lis_data = function(comid) {
         $(".info").html("");
         $tsplotModal.modal("show");
-        $loading.removeClass("hidden");
-        $plotter.addClass("hidden");
+
+        // Init loaders
+        $('#loading-historical').removeClass('hidden');
+        $('#loading-forecast').removeClass('hidden');
 
         $.ajax({
             type: "GET",
             url: "get-lis-time-series/",
             data: {
-                comid
+                comid,
+                 type:'historical'
             },
             error: function(err) {
                   $(".info").html(
                         "<b>Error processing the request." + err
                     );
                 $loading.addClass("hidden");
-                $("#chartloc").html('');
+                $("#historicalChart").html('');
             },
             success: data => {
-                $("#chartloc").html(data);
+                $("#historicalChart").html(data);
                 
+                $('#loading-historical').addClass("hidden");
+            }
+        });
+
+         $.ajax({
+            type: "GET",
+            url: "get-lis-time-series/",
+            data: {
+                comid,
+                type:'forecast'
+            },
+            error: function(err) {
+                  $(".info").html(
+                        "<b>Error processing the request." + err
+                    );
                 $loading.addClass("hidden");
+                $("#forecastChart").html('');
+            },
+            success: data => {
+                $("#forecastChart").html(data);
+                
+                $('#loading-forecast').addClass('hidden');
             }
         });
     };
@@ -760,50 +785,6 @@ var LIBRARY_OBJECT = (function() {
         xhr
             .done(function(data) {
                 if ("success" in data) {
-                    //                    if(data.interaction == "point"){
-                    //                    var index = find_var_index(variable,variable_data);
-                    //                    var display_name = variable_data[index]["display_name"];
-                    //                    var units = variable_data[index]["units"];
-                    //                    $("#plotter").highcharts({
-                    //                        chart: {
-                    //                            type:'area',
-                    //                            zoomType: 'x'
-                    //                        },
-                    //                        title: {
-                    //                            text: 'Values for ' + display_name
-                    //                            // style: {
-                    //                            //     fontSize: '13px',
-                    //                            //     fontWeight: 'bold'
-                    //                            // }
-                    //                        },
-                    //                        xAxis: {
-                    //                            type: 'datetime',
-                    //                            labels: {
-                    //                                format: '{value:%d %b %Y}'
-                    //                                // rotation: 90,
-                    //                                // align: 'left'
-                    //                            },
-                    //                            title: {
-                    //                                text: 'Date'
-                    //                            }
-                    //                        },
-                    //                        yAxis: {
-                    //                            title: {
-                    //                                text: units
-                    //                            }
-                    //
-                    //                        },
-                    //                        exporting: {
-                    //                            enabled: true
-                    //                        },
-                    //                        series: [{
-                    //                            data:data.time_series,
-                    //                            name: display_name
-                    //                        }]
-                    //                    });
-                    //                    $plotter.removeClass('hidden');
-                    //                    $loading.addClass('hidden');
-                    //}
                     if (
                         data.interaction == "district" ||
                         data.interaction == "polygon" ||

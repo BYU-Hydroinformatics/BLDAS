@@ -110,6 +110,66 @@ def get_plot(request):
     return JsonResponse(return_obj)
 
 
+def get_chart_from_nc(ncFilePath, comid, units):
+    res = nc.Dataset(ncFilePath, 'r')
+
+    dates_raw = res.variables['time'][:]
+
+    dates = []
+    for d in dates_raw:
+        dates.append(dt.datetime.fromtimestamp(d))
+
+    comid_list = res.variables['rivid'][:]
+
+    try:
+        comid_index = int(np.where(comid_list == int(comid))[0])
+    except Exception as e:
+        raise ValueError(
+            'No matching COMID found for the feature in our dataset. Please check the dataset or the feature layer')
+
+    values = []
+    for l in list(res.variables['Qout'][:]):
+        values.append(float(l[comid_index]))
+
+    # --------------------------------------
+    # Chart Section
+    # --------------------------------------
+    series = go.Scatter(
+        name='LDAS',
+        x=dates,
+        y=values,
+        )
+
+    layout = go.Layout(
+        title="LDAS Streamflow <br><sub>Nepal (South Asia): {0}</sub>".format(
+            comid),
+        xaxis=dict(
+            title='Date',
+            ),
+        yaxis=dict(
+            title='Streamflow ({}<sup>3</sup>/s)'.format(get_units_title(units))
+            ),
+        width='100%',
+        height='100%',
+        margin=go.Margin(
+            l=50,
+            r=50,
+            b=20,
+            t=100,
+            pad=4
+            )
+        )
+
+    chart_obj = PlotlyView(
+        go.Figure(data=[series],
+                  layout=layout)
+        )
+
+    return chart_obj
+
+# returns both historical and forecast data
+
+
 def get_lis(request):
     get_data = request.GET
 
@@ -117,57 +177,39 @@ def get_lis(request):
         comid = get_data.get('comid')
         units = 'metric'
 
-        path = os.path.join(LIS_DIR)
-        filename = [f for f in os.listdir(path) if 'Qout' in f]
-        res = nc.Dataset(os.path.join(LIS_DIR, filename[0]), 'r')
+        if(get_data.get('type') == 'historical'):
 
-        dates_raw = res.variables['time'][:]
+            filename = [f for f in os.listdir(LIS_DIR) if 'Qout' in f]
+            filePath = os.path.join(LIS_DIR, filename[0])
+            try:
+                historical_chart = get_chart_from_nc(filePath, comid, units)
+                context = {'chart': historical_chart}
 
-        dates = []
-        for d in dates_raw:
-            dates.append(dt.datetime.fromtimestamp(d))
+                return render(request, 'bldas_explorer/charts.html', context)
 
-        comid_list = res.variables['rivid'][:]
-        try:
-            comid_index = int(np.where(comid_list == int(comid))[0])
-        except Exception as e:
-            print str(e)
-            return JsonResponse({'error': 'No matching COMID found for the feature in our dataset. Please check the dataset or the feature layer'})
+            except ValueError as err:
+                print str(e)
+                return JsonResponse({'Error': str(e)})
 
-        values = []
-        for l in list(res.variables['Qout'][:]):
-            values.append(float(l[comid_index]))
+        elif (get_data.get('type') == 'forecast'):
+            filename = [f for f in os.listdir(FOREACAST_DIR) if 'Qout' in f]
+            filePath = os.path.join(FOREACAST_DIR, filename[0])
 
-        # --------------------------------------
-        # Chart Section
-        # --------------------------------------
-        series = go.Scatter(
-            name='LDAS',
-            x=dates,
-            y=values,
-            )
+            if filename:
+                try:
+                    forecast_chart = get_chart_from_nc(filePath, comid, units)
+                    context = {'chart': forecast_chart}
 
-        layout = go.Layout(
-            title="LDAS Streamflow <br><sub>Nepal (South Asia): {0}</sub>".format(
-                comid),
-            xaxis=dict(
-                title='Date',
-                ),
-            yaxis=dict(
-                title='Streamflow ({}<sup>3</sup>/s)'.format(get_units_title(units))
-                )
-            )
+                    return render(request, 'bldas_explorer/charts.html', context)
 
-        chart_obj = PlotlyView(
-            go.Figure(data=[series],
-                      layout=layout)
-            )
+                except ValueError as err:
+                    print str(e)
+                    return JsonResponse({'Error': str(e)})
+            else:
+                return JsonResponse({'error': 'No files found for this type of data'})
 
-        context = {
-            'gizmo_object': chart_obj,
-            }
-
-        return render(request, 'bldas_explorer/gizmo.html', context)
+        else:
+            return JsonResponse({'error': 'Please specify type of data. historical or forecast'})
 
     except Exception as e:
         print str(e)

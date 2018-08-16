@@ -169,20 +169,18 @@
                 <h2 class="modal-title" id="ts-plot-modal-label">Time Series Plot</h2>
             </div>
             <div class="modal-body">
-                <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a id="data" href="#data" aria-controls="data" role="tab" data-toggle="tab">Historical</a></li>
+                    <li role="presentation" class="active"><a id="historical" href="#historical" aria-controls="historical" role="tab" data-toggle="tab">Historical</a></li>
                     <li role="presentation"><a id="forecast_link" href="#forecast" aria-controls="forecast" role="tab" data-toggle="tab">Forecast</a></li>
                 </ul>
-                <div role="tabpanel" class="tab-pane active" id="data">
+                <div class="tab-content clearfix">
+                <div role="tabpanel" class="tab-pane fade in active" id="historical">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div>
                                 <div class="chart-wrapper">
-                                    <div class="chart-inner">
-                                        <div align="center" class="flex-container-row"><img id="view-file-loading" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
-                                        <div id="chartloc"></div>
-                                        <div id="plotter" name="plotter" style="height:350px;width:100%"></div>
+                                    <div align="center" class="flex-container-row"><img id="loading-historical" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
+                                    <div class="chart-inner" id="historicalChart">
                                         <div id="info" class="hidden info"></div>
                                     </div>
                                 </div>
@@ -190,6 +188,21 @@
                         </div>
                     </div>
                 </div>
+                <div role="tabpanel" class="tab-pane" id="forecast">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div>
+                                <div class="chart-wrapper">
+                                    <div align="center" class="flex-container-row"><img id="loading-forecast" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
+                                    <div class="chart-inner" id="forecastChart">
+                                        <div id="info" class="hidden info"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
                 <br/>
             </div>
         </div>
