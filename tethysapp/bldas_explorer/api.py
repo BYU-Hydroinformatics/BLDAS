@@ -18,7 +18,7 @@ def get_data(request):
     return JsonResponse(data)
 """
 
-from utils import get_point_stats,get_feature_stats,get_polygon_stats, get_polygon_statsRange
+from utils import get_point_stats,get_feature_stats,get_polygon_stats, get_polygon_statsRange, get_polygon_areaRange
 from django.http import JsonResponse, HttpResponse
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import api_view, authentication_classes
@@ -171,6 +171,40 @@ def get_poly_ts_Range_post(request):
     return JsonResponse(json_obj)
     # return HttpResponse(json_obj)
 
+# Nishanta code start
+@api_view(['POST'])
+@authentication_classes((TokenAuthentication,))
+def get_poly_area_Range_post(request):
 
+    json_obj = {}
 
+    if request.method == 'POST':
+        info = request.POST
 
+        suffix = info.get('variable')
+        interval = info.get('interval')  # period dd, mm, yy
+        interval = interval.lower()
+        year = info.get('year')
+        month = info.get('month')
+        range = info.get('range')
+        geom = info.get('geom')
+        minVal = info.get('minVal') or None
+        maxVal = info.get('maxVal') or None
+
+        if (minVal == None) and (maxVal == None):
+            return JsonResponse({"error":"Have to supply either min or max value"})
+
+        try:
+            minVal = float(minVal)
+            maxVal = float(maxVal)
+            ts = get_polygon_areaRange(suffix, geom, interval, year, month, range, minVal, maxVal)
+
+            json_obj["time_series"] = ts
+            json_obj["success"] = "success"
+            json_obj["interval"] = interval
+        except Exception as e:
+            json_obj["error"] = "Error processing request: " + str(e)
+
+    return JsonResponse(json_obj)
+
+# Nishanta code end

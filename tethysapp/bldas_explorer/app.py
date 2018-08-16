@@ -59,6 +59,11 @@ class BldasExplorer(TethysAppBase):
                 url='bldas-explorer/api/getPolygonStatsRangePost',
                 controller='bldas_explorer.api.get_poly_ts_Range_post'
             ),
+                UrlMap(
+                name='get_poly_area_Range_post',
+                url='bldas-explorer/api/getPolyAreaRangePost',
+                controller='bldas_explorer.api.get_poly_area_Range_post'
+            ),
         )
 
         return url_maps

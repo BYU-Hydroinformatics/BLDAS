@@ -784,41 +784,93 @@ var LIBRARY_OBJECT = (function() {
             $( "#date_table" ).change();
         });
 
+        $("#year_table").change(function(){
+            // var year = ($("#year_table option:selected").val());
+            // alert("Start: " + year)
+        });
+
         $("#interval_table").change(function(){
+
+            var d = new Date();
+            var n = (d.getMonth() + 1);
             var interval_type = ($("#interval_table option:selected").val());
             gen_slider(interval_type);
             $("#date_table").html('');
+            var year = ($("#year_table option:selected").val());
 
             if(interval_type == 'DD'){
-
-                dekad_options.forEach(function(date,i){
+                if (year == '2018'){
+                    dekad_options.forEach(function(date,i){
+                        var chkDate = parseInt(date[0]);
+                        if (chkDate < (n * 100)) {
+                            var new_option = new Option(date[1],date[0]);
+                            if(i==0){
+                                $("#date_table").append(new_option).trigger('change');
+                            }else{
+                                $("#date_table").append(new_option);
+                            }
+                        }
+                    var date_type = ($("#date_table option:selected").val());
+                    });
+                }
+                else{
+                    dekad_options.forEach(function(date,i){
                         var new_option = new Option(date[1],date[0]);
                         if(i==0){
                             $("#date_table").append(new_option).trigger('change');
                         }else{
                             $("#date_table").append(new_option);
                         }
+                    var date_type = ($("#date_table option:selected").val());
                     });
+                }
             }else if(interval_type == 'MM'){
 
             month_options.forEach(function(date,i){
-                        var new_option = new Option(date[1],date[0]);
-                        if(i==0){
+                if (year == '2018'){
+                    var new_option = new Option(date[1], date[0]);
+                    var chkDate = parseInt(date[0]);
+                    if (chkDate < n) {
+                        if (i == 0) {
                             $("#date_table").append(new_option).trigger('change');
-                        }else{
+                        } else {
                             $("#date_table").append(new_option);
                         }
-                    });
-            }else if(interval_type == '3M'){
+                    }
+                }
+                else {
+                    var new_option = new Option(date[1], date[0]);
+                    if (i == 0) {
+                        $("#date_table").append(new_option).trigger('change');
+                    } else {
+                        $("#date_table").append(new_option);
+                    }
+                }
+                });
+            }
+            else if(interval_type == '3M'){
 
             quarter_options.forEach(function(date,i){
-                        var new_option = new Option(date[1],date[0]);
-                        if(i==0){
+                if (year == '2018'){
+                    var chkDate = parseInt(date[0]);
+                    var new_option = new Option(date[1], date[0]);
+                    if (chkDate < (n * 10000)){
+                        if (i == 0) {
                             $("#date_table").append(new_option).trigger('change');
-                        }else{
+                        } else {
                             $("#date_table").append(new_option);
                         }
-                    });
+                    }
+                }
+                else {
+                    var new_option = new Option(date[1], date[0]);
+                    if (i == 0) {
+                        $("#date_table").append(new_option).trigger('change');
+                    } else {
+                        $("#date_table").append(new_option);
+                    }
+                }
+                });
             }
 
         }).change();
