@@ -188,8 +188,8 @@ def get_lis(request):
                 return render(request, 'bldas_explorer/charts.html', context)
 
             except ValueError as err:
-                print str(e)
-                return JsonResponse({'Error': str(e)})
+                print str(err)
+                return JsonResponse({'Error': str(err)})
 
         elif (get_data.get('type') == 'forecast'):
             filename = [f for f in os.listdir(FOREACAST_DIR) if 'Qout' in f]
@@ -203,8 +203,8 @@ def get_lis(request):
                     return render(request, 'bldas_explorer/charts.html', context)
 
                 except ValueError as err:
-                    print str(e)
-                    return JsonResponse({'Error': str(e)})
+                    print str(err)
+                    return JsonResponse({'Error': str(err)})
             else:
                 return JsonResponse({'error': 'No files found for this type of data'})
 
@@ -240,20 +240,27 @@ def get_forecast_stats(request):
     subbasin_name = get_info.get('subbasin_name')
     river_id = get_info.get('river_id')
     units = get_info.get('units')
+    dType = get_info.get('type')
 
     # Get the dataset. In our current situtation there aren't a lot of datasets but just one.
     # this might change in the future so we would need to add some additional logic here to handle that
-
-    filename = [f for f in os.listdir(path_to_rapid_output) if 'Qout' in f]
-    forecast_nc = os.path.join(LIS_DIR, filename[0])
-
-    # Just doing the one file for now. Later on we can worry about an ensamble or multiple files if they exist
-
-    qout_datasets = []
-    ensemble_index_list = [1]
     return_dict = {}
 
-    merged_ds = xarray.open_dataset(forecast_nc, autoclose=True).sel(
+    if(dType == 'historical'):
+
+        filename = [f for f in os.listdir(LIS_DIR) if 'Qout' in f]
+        filePath = os.path.join(LIS_DIR, filename[0])
+
+    elif (dType == 'forecast'):
+        filename = [f for f in os.listdir(FOREACAST_DIR) if 'Qout' in f]
+        filePath = os.path.join(FOREACAST_DIR, filename[0])
+
+    else:
+        raise ValueError(
+            'Invalid Type of data. Only forecast or historical supported')
+        return
+
+    merged_ds = xarray.open_dataset(filePath, autoclose=True).sel(
         rivid=long(river_id)).Qout
 
     return_dict['mean'] = merged_ds.to_dataframe().Qout

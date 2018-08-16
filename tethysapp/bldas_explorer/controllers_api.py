@@ -27,9 +27,9 @@ def get_forecast_streamflow_csv(request):
         forecast_data, watershed_name, subbasin_name, river_id, units = \
             get_forecast_stats(request)
 
-    except Exception as e:
-        print str(e)
-
+    except ValueError as err:
+        print str(err)
+        return JsonResponse({'error': str(err)})
 
     # prepare to write response for CSV
     response = HttpResponse(content_type='text/csv')

@@ -29,8 +29,9 @@ python setup.py develop
 
 | Parameter | Description            | Example       | 
 | ----------- | --------------- | --------- | 
-| watershed_name OP     | CREATE          | READ      | 
-| subbasin_name       | C dogs | List dogs |
+| watershed_name | Name of the Watershed          | Nepal      | 
+| subbasin_name       | Sub Basin | Central |
+| type | forecast data or historical | forecast |
 | river_id  | River/Stream ID           | 2345678   | 
 | return_format       | Currently only csv is supported | css |
 | units  | Set to ‘english’ to get ft3/s. (Optional)           | english   | 
@@ -38,7 +39,7 @@ python setup.py develop
 Example
 ```python
 >>> import requests
->>> request_params = dict(watershed_name='Nepal', subbasin_name='Central', river_id=5,  return_format='csv')
+>>> request_params = dict(watershed_name='Nepal', subbasin_name='Central', type='forecast' river_id=5,  return_format='csv')
 >>> request_headers = dict(Authorization='Token asdfqwer1234')
 >>> res = requests.get('[HOST Portal]/apps/bldas-explorer//api/GetForecast/', params=request_params, headers=request_headers)
 ```

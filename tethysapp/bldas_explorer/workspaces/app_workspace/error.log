@@ -683,3 +683,73 @@ Traceback (most recent call last):
   File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 34, in get_forecast_streamflow_csv
     print forecast_statistics
 UnboundLocalError: local variable 'forecast_statistics' referenced before assignment
+[2018-08-16 07:40:14,713] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 249, in get_forecast_stats
+    if(get_data.get('type') == 'historical'):
+NameError: global name 'get_data' is not defined
+[2018-08-16 07:40:14,714] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 38, in get_forecast_streamflow_csv
+    .format(watershed_name,
+UnboundLocalError: local variable 'watershed_name' referenced before assignment
+[2018-08-16 07:41:37,935] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 260, in get_forecast_stats
+    'Invalid Type of data. Only forecast or historical supported')
+ValueError: Invalid Type of data. Only forecast or historical supported
+[2018-08-16 07:41:37,935] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 38, in get_forecast_streamflow_csv
+    .format(watershed_name,
+UnboundLocalError: local variable 'watershed_name' referenced before assignment
+[2018-08-16 07:42:46,243] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 260, in get_forecast_stats
+    'Invalid Type of data. Only forecast or historical supported')
+ValueError: Invalid Type of data. Only forecast or historical supported
+[2018-08-16 07:42:46,244] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 38, in get_forecast_streamflow_csv
+    .format(watershed_name,
+UnboundLocalError: local variable 'watershed_name' referenced before assignment
+[2018-08-16 07:44:30,979] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 261, in get_forecast_stats
+    'Invalid Type of data. Only forecast or historical supported')
+ValueError: Invalid Type of data. Only forecast or historical supported
+[2018-08-16 07:44:30,979] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers_api.py", line 38, in get_forecast_streamflow_csv
+    .format(watershed_name,
+UnboundLocalError: local variable 'watershed_name' referenced before assignment
+[2018-08-16 07:46:06,149] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 260, in get_forecast_stats
+    'Invalid Type of data. Only forecast or historical supported')
+ValueError: Invalid Type of data. Only forecast or historical supported
+[2018-08-16 07:46:47,247] ERROR:BLDAS:Internal Server Error.
+Traceback (most recent call last):
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/exceptions.py", line 75, in inner
+    return view_func(*args, **kwargs)
+  File "/Users/student/Desktop/Research/test_tethys/src/tethys_apps/tethysapp/bldas_explorer/controllers.py", line 260, in get_forecast_stats
+    'Invalid Type of data. Only forecast or historical supported')
+ValueError: Invalid Type of data. Only forecast or historical supported
