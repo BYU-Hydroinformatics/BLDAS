@@ -42,12 +42,22 @@ def home(request):
     variable_info = get_variables_meta()
     geoserver_wms_url = geoserver["wms_url"]
 
+    layer_toggle = ToggleSwitch(display_text='Display Streams',
+                                name='streamsToggle',
+                                on_label='On',
+                                off_label='Off',
+                                on_style='success',
+                                off_style='warning',
+                                initial=True,
+                                size='mini')
+
     context = {
         'variable_info': json.dumps(variable_info),
         'dekad_options': json.dumps(dekad_options),
         'month_options': json.dumps(month_options),
         'quarter_options': json.dumps(quarter_options),
         'geoserver_wms_url': geoserver_wms_url,
+        'layer_toggle': layer_toggle
         }
 
     return render(request, 'bldas_explorer/home.html', context)

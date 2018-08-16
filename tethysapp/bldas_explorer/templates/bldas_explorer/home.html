@@ -91,6 +91,9 @@
     <option value="Polygon">Polygon</option>
     <option value="District">Select a State</option>
 </select>
+
+{% gizmo layer_toggle %}
+
 <br>
 <br>
 <!--<b>Legend:</b>-->
@@ -161,12 +164,36 @@
 </div>
 </div>
 <!--Show VIC Plot -->
+
 <div class="modal fade" id="ts-plot-modal" tabindex="-1" role="dialog" aria-labelledby="ts-plot-modal-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h2 class="modal-title" id="ts-plot-modal-label">Time Series Plot</h2>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div class="chart-wrapper">
+                        <div class="chart-inner">
+                            <div align="center" class="flex-container-row"><img id="view-file-loading" class="view-file hidden" src="/static/bldas_explorer/images/loader.gif" /></div>
+                            <div id="plotter" name="plotter" style="height:350px;width:100%" ></div>
+                            <div id="info" class="hidden info"></div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="sf-plot-modal" tabindex="-1" role="dialog" aria-labelledby="sf-plot-modal-label">
     <div class="modal-dialog" role="document">
         <div class="modal-content wide-plot">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h2 class="modal-title" id="ts-plot-modal-label">Time Series Plot</h2>
+                <h2 class="modal-title" id="sf-plot-modal-label">Time Series Plot</h2>
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs" role="tablist">

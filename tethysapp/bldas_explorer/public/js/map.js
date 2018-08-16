@@ -355,10 +355,16 @@ var LIBRARY_OBJECT = (function() {
                 districtLayer.setVisible(false);
                 wms_layer.setVisible(true);
                 map.removeInteraction(draw);
+
                 if (featureType == "None") {
+                    feature_layer.setVisible(true);
                     wms_layer.setVisible(true);
+                    // Also switch on
+                    $('#streamsToggle').bootstrapSwitch('state', true);
                 } else {
+                    feature_layer.setVisible(false);
                     wms_layer.setVisible(false);
+                    $('#streamsToggle').bootstrapSwitch('state', false);
                 }
                 if (featureType == "None") {
                     $("#data").val("");
@@ -399,6 +405,16 @@ var LIBRARY_OBJECT = (function() {
             observer.observe(target, config);
         })();
 
+
+        $('#streamsToggle').on('switchChange.bootstrapSwitch', function(e) {
+            if(e.target.checked)
+                feature_layer.setVisible(true);
+            else
+                feature_layer.setVisible(false);
+        });
+
+
+
         map.on("singleclick", function(evt) {
             $(element).popover("destroy");
 
@@ -411,6 +427,9 @@ var LIBRARY_OBJECT = (function() {
                     .val() == "District"
             ) {
                 var clickCoord = evt.coordinate;
+
+
+
                 var view = map.getView();
                 var viewResolution = view.getResolution();
 
@@ -504,8 +523,8 @@ var LIBRARY_OBJECT = (function() {
                     });
                 } else {
                     if (wms_url) {
-                        $("#historicalChart").html('');
-                        $("#forecastChart").html('');
+                        $("#historicalChart").html("");
+                        $("#forecastChart").html("");
                         $.ajax({
                             type: "GET",
                             url: wms_url,
@@ -516,7 +535,8 @@ var LIBRARY_OBJECT = (function() {
                                         "COMID"
                                     ];
 
-                                get_lis_data(comid);
+                                console.log(evt.coordinate);
+                                get_lis_data(comid, evt.coordinate);
                             },
                             error: function(err) {
                                 console.log(error);
@@ -703,53 +723,49 @@ var LIBRARY_OBJECT = (function() {
         }
     };
 
-    get_lis_data = function(comid) {
+    get_lis_data = function(comid, pointdata) {
         $(".info").html("");
-        $tsplotModal.modal("show");
+        $(`#sf-plot-modal`).modal("show");
 
         // Init loaders
-        $('#loading-historical').removeClass('hidden');
-        $('#loading-forecast').removeClass('hidden');
+        $("#loading-historical").removeClass("hidden");
+        $("#loading-forecast").removeClass("hidden");
 
         $.ajax({
             type: "GET",
             url: "get-lis-time-series/",
             data: {
                 comid,
-                 type:'historical'
+                type: "historical"
             },
             error: function(err) {
-                  $(".info").html(
-                        "<b>Error processing the request." + err
-                    );
+                $(".info").html("<b>Error processing the request." + err);
                 $loading.addClass("hidden");
-                $("#historicalChart").html('');
+                $("#historicalChart").html("");
             },
             success: data => {
                 $("#historicalChart").html(data);
-                
-                $('#loading-historical').addClass("hidden");
+
+                $("#loading-historical").addClass("hidden");
             }
         });
 
-         $.ajax({
+        $.ajax({
             type: "GET",
             url: "get-lis-time-series/",
             data: {
                 comid,
-                type:'forecast'
+                type: "forecast"
             },
             error: function(err) {
-                  $(".info").html(
-                        "<b>Error processing the request." + err
-                    );
+                $(".info").html("<b>Error processing the request." + err);
                 $loading.addClass("hidden");
-                $("#forecastChart").html('');
+                $("#forecastChart").html("");
             },
             success: data => {
                 $("#forecastChart").html(data);
-                
-                $('#loading-forecast').addClass('hidden');
+
+                $("#loading-forecast").addClass("hidden");
             }
         });
     };
